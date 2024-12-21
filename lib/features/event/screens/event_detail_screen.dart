@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:footer/footer.dart';
 import 'package:footer/footer_view.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EventDetailScreen extends StatefulWidget {
   static const String id = "/event_detail_screen";
@@ -57,7 +58,12 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    if (!await launchUrl(
+                        Uri.parse(value.eventDetail.url.toString()))) {
+                      throw Exception('Could not launch');
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueAccent,
                     foregroundColor: Colors.white,
@@ -78,7 +84,12 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () async {
+                    if (!await launchUrl(
+                        Uri.parse(value.eventDetail.ctftimeUrl.toString()))) {
+                      throw Exception('Could not launch');
+                    }
+                  },
                   child: CustomText(
                     txtTitle: StringConstants.viewOnCtfTimes,
                   ),
@@ -111,9 +122,13 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "https://images.ctfassets.net/aoyx73g9h2pg/3H8sLBKCH7xIph1YZmjFvd/8292d73649a27a4eb65724fa1df629f7/10684-1024x575.jpg?w=3840&q=100"),
+                  CircleAvatar(
+                    backgroundImage: value.eventDetail.logo!.isNotEmpty
+                        ? NetworkImage(
+                            value.eventDetail.logo!,
+                          )
+                        : NetworkImage(
+                            "https://images.ctfassets.net/aoyx73g9h2pg/3H8sLBKCH7xIph1YZmjFvd/8292d73649a27a4eb65724fa1df629f7/10684-1024x575.jpg?w=3840&q=100"),
                     radius: 50,
                   ),
                   const SizedBox(
