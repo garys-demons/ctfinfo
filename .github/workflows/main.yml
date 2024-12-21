@@ -16,6 +16,11 @@ jobs:
         with:
           flutter-version: '3.27.1'
           channel: 'stable'
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'oracle'
+          java-version: '17'
       - name: Get packages
         run: flutter pub get
       - name: Build APK
