@@ -5,4 +5,12 @@ class StringConstants {
   static const String yourTeam = "Your Team";
   static const String events = "Events";
   static const String averageWeight = "Average Weight";
+  static const String start = "Starts";
+  static const String end = "Ends";
+  static const String participants = "Participants";
+  static const String format = "Format";
+  static const String location = "Location";
+  static const String mode = "Mode";
+  static const String viewOnCtfTimes = "View on CTF Time";
+  static const String openWebsite = "Open Website";
 }

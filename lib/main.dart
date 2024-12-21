@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
-          fontFamily: GoogleFonts.montserrat().fontFamily,
+          fontFamily: GoogleFonts.dmMono().fontFamily,
         ),
         onGenerateRoute: (settings) =>
             RouteGenerator.getRouter(deepLinkinRouteSettings ?? settings),

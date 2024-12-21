@@ -1,11 +1,11 @@
 import 'package:ctfinfo/features/event/provider/event_provider.dart';
 import 'package:ctfinfo/features/event/widgets/event_card.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
-// import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class EventScreen extends StatefulWidget {
+  static const String id = "/event-screen";
   const EventScreen({super.key});
 
   @override
