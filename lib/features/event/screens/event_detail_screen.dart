@@ -111,7 +111,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 ),
                 const SizedBox(width: 10),
                 const CustomText(
-                  txtTitle: "Event Detail",
+                  txtTitle: "CTF Detail",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ],
