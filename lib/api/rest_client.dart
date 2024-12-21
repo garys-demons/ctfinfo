@@ -11,11 +11,13 @@ class RestClient {
 
     try {
       final response = await http.get(Uri.parse(EndPoints.baseUrl + path));
-      responseJson = jsonDecode(response.body);
+      debugPrint(response.body);
+
       debugPrint("---------------------------");
       debugPrint("Response : ${EndPoints.baseUrl + path}");
-      debugPrint("Response : ${responseJson.toString()}");
+      debugPrint("Response : ${response.body.toString()}");
       debugPrint("---------------------------");
+      responseJson = jsonDecode(response.body);
     } on SocketException {
       throw Exception('No Internet connection');
     }

@@ -1,4 +1,5 @@
 import 'package:ctfinfo/constants/string_constants.dart';
+import 'package:ctfinfo/features/event/screens/event_detail_screen.dart';
 import 'package:ctfinfo/utils/date_time_utils.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,11 @@ class EventCard extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          debugPrint("EventCard Clicked");
+          Navigator.pushNamed(
+            context,
+            EventDetailScreen.id,
+            arguments: eventId,
+          );
         },
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),

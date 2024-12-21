@@ -1,4 +1,4 @@
-import 'package:ctfinfo/features/event/event_screen.dart';
+import 'package:ctfinfo/features/event/screens/event_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
