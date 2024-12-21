@@ -25,6 +25,6 @@ jobs:
       - name: Archive Production
         run: flutter build ipa --release --no-codesign
       - name: Upload APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: app-release
