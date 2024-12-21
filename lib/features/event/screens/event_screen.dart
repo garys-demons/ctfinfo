@@ -65,7 +65,7 @@ class _EventScreenState extends State<EventScreen> {
                 averageWeight: value.events[index].weight.toString(),
                 startDate: value.events[index].start ?? '',
                 endDate: value.events[index].finish ?? '',
-                eventId: '121',
+                eventId: value.events[index].id.toString(),
               ),
             ),
           ],

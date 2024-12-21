@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRouter(RouteSettings routeSetting) {
-    // var args = routeSetting.arguments;
+    var args = routeSetting.arguments;
     switch (routeSetting.name) {
       case BottomNavBar.id:
         return MaterialPageRoute(
@@ -21,7 +21,10 @@ class RouteGenerator {
 
       case EventDetailScreen.id:
         return MaterialPageRoute(
-          builder: (context) => const EventDetailScreen(),
+          builder: (context) {
+            final eventId = args;
+            return EventDetailScreen(eventId: eventId.toString());
+          },
           settings: routeSetting,
         );
 

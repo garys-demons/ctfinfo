@@ -30,6 +30,7 @@ class EventCard extends StatelessWidget {
           Navigator.pushNamed(
             context,
             EventDetailScreen.id,
+            arguments: eventId,
           );
         },
         child: Padding(
