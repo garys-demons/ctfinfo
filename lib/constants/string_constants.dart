@@ -13,4 +13,6 @@ class StringConstants {
   static const String mode = "Mode";
   static const String viewOnCtfTimes = "View on CTF Time";
   static const String openWebsite = "Open Website";
+  static const String points = "Points";
+  static const String teamId = "Team ID";
 }

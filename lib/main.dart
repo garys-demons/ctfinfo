@@ -1,5 +1,6 @@
 import 'package:ctfinfo/features/event/provider/event_provider.dart';
 import 'package:ctfinfo/features/splash/splash_screen.dart';
+import 'package:ctfinfo/features/teams/provider/team_provider.dart';
 import 'package:ctfinfo/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,7 +26,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<EventProvider>.value(value: EventProvider())
+        ChangeNotifierProvider<EventProvider>.value(value: EventProvider()),
+        ChangeNotifierProvider<TeamProvider>.value(value: TeamProvider())
       ],
       child: MaterialApp(
         navigatorKey: navigatorKey,

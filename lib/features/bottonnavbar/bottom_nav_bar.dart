@@ -1,4 +1,5 @@
 import 'package:ctfinfo/features/event/screens/event_screen.dart';
+import 'package:ctfinfo/features/teams/screens/team_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -13,7 +14,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
   static const List<Widget> _navBarScreens = <Widget>[
     EventScreen(),
-    Center(child: Text("Team (Coming Soon)", style: TextStyle(fontSize: 30))),
+    TeamListScreen(),
     Center(
         child: Text("Write Ups (Coming Soon)", style: TextStyle(fontSize: 30))),
     Center(
