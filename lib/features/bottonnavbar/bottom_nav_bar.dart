@@ -13,9 +13,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
   static const List<Widget> _navBarScreens = <Widget>[
     EventScreen(),
-    Center(child: Text("Team", style: TextStyle(fontSize: 30))),
-    Center(child: Text("Write Ups", style: TextStyle(fontSize: 30))),
-    Center(child: Text("Your Team", style: TextStyle(fontSize: 30))),
+    Center(child: Text("Team (Coming Soon)", style: TextStyle(fontSize: 30))),
+    Center(
+        child: Text("Write Ups (Coming Soon)", style: TextStyle(fontSize: 30))),
+    Center(
+        child: Text("Your Team (Coming Soon)", style: TextStyle(fontSize: 30))),
   ];
 
   void _onMenuItemSelected(int index) {
