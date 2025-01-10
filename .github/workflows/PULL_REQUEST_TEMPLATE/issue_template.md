@@ -3,17 +3,16 @@
 - [ ] bug report
 - [ ] feature request
 
-## What is the current behavior?
+## Describe the bug
 
-## If the current behavior is a bug, please provide the steps to reproduce and if possible a minimal demo of the problem
+## Steps to reproduce
 
-## What is the expected behavior?
+## Expected behavior
 
 ## What is the motivation / use case for changing the behavior?
 
-## Please tell us about your environment:
+## Please tell us about your flutter version:
 
-Version: 2.0.0-beta.X
-Browser:
-Language:
+Flutter Version: 
+Fluuter doctor output:
 
