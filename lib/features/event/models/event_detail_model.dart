@@ -2,7 +2,7 @@ class EventDetailModel {
   List<Organizers>? organizers;
   String? ctftimeUrl;
   int? ctfId;
-  double? weight;
+  num? weight;
   Duration? duration;
   String? liveFeed;
   String? logo;
