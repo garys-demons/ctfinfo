@@ -15,4 +15,9 @@ class StringConstants {
   static const String openWebsite = "Open Website";
   static const String points = "Points";
   static const String teamId = "Team ID";
+  static const String country = "Country";
+  static const String ratingPlace = "Rating Place";
+  static const String ratingPoints = "Rating Points";
+  static const String countryPlace = "Country Place";
+  static const String organizerPoints = "Organizer Points";
 }

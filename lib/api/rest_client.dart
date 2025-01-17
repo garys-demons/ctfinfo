@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:ctfinfo/api/end_points.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -12,6 +11,7 @@ class RestClient {
     try {
       final response = await http.get(Uri.parse(EndPoints.baseUrl + path));
       debugPrint(response.body);
+
 
       debugPrint("---------------------------");
       debugPrint("Response : ${EndPoints.baseUrl + path}");

@@ -53,7 +53,7 @@ class EventDetailModel {
         organizers!.add(Organizers.fromJson(v));
       });
     }
-    ctftimeUrl = json['ctftime_url'];
+    ctftimeUrl = json['ctftime_url']; 
     ctfId = json['ctf_id'];
     weight = json['weight'];
     duration =
