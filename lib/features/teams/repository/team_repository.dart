@@ -6,7 +6,6 @@ class TeamRepository extends RestClient {
   }
 
   Future<dynamic> getTeamDetail(String teamId) async {
-    return await get(
-      'teams/$teamId/');
+    return await get('teams/$teamId/');
   }
 }
