@@ -14,7 +14,7 @@ class TeamProvider extends ChangeNotifier {
   dynamic _data2024;
   dynamic get data2024 => _data2024;
 
-  set setData2024(dynamic value){
+  set data2024(dynamic value) {
     _data2024 = value;
     notifyListeners();
   }
@@ -36,7 +36,7 @@ class TeamProvider extends ChangeNotifier {
     try {
       final response = await _repository.getTeamDetail(teamId);
       _teamDetail = TeamDetailModel.fromJson(response);
-      setData2024 = _teamDetail.rating!["2024"];
+      data2024(_teamDetail.rating!["2024"]);
       notifyListeners();
       return true;
     } catch (e) {

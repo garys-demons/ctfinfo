@@ -25,7 +25,9 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (context) {
             final eventId = args;
-            return EventDetailScreen(eventId: eventId.toString());
+            return EventDetailScreen(
+              eventId: eventId.toString(),
+            );
           },
           settings: routeSetting,
         );
@@ -35,14 +37,16 @@ class RouteGenerator {
           settings: routeSetting,
         );
 
-        case TeamDetailsScreen.id:
-          return MaterialPageRoute(
-            builder: (context) {
-              final teamId = args;
-              return TeamDetailsScreen(
-                teamId: teamId.toString(),);
-            },
-            settings: routeSetting,);
+      case TeamDetailsScreen.id:
+        return MaterialPageRoute(
+          builder: (context) {
+            final teamId = args;
+            return TeamDetailsScreen(
+              teamId: teamId.toString(),
+            );
+          },
+          settings: routeSetting,
+        );
 
       default:
         return MaterialPageRoute(
