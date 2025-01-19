@@ -25,7 +25,9 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (context) {
             final eventId = args;
-            return EventDetailScreen(eventId: eventId.toString());
+            return EventDetailScreen(
+              eventId: eventId.toString(),
+            );
           },
           settings: routeSetting,
         );
