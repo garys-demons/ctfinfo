@@ -1,4 +1,5 @@
 import 'package:ctfinfo/constants/string_constants.dart';
+import 'package:ctfinfo/features/teams/screens/team_details_screen.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -18,11 +19,11 @@ class TeamCard extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          // Navigator.pushNamed(
-          //   context,
-          //   EventDetailScreen.id,
-          //   arguments: eventId,
-          // );
+          Navigator.pushNamed(
+            context,
+            TeamDetailsScreen.id,
+            arguments: teamId,
+          );
         },
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),

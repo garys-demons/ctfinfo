@@ -1,6 +1,7 @@
 import 'package:ctfinfo/features/bottonnavbar/bottom_nav_bar.dart';
 import 'package:ctfinfo/features/event/screens/event_detail_screen.dart';
 import 'package:ctfinfo/features/event/screens/event_screen.dart';
+import 'package:ctfinfo/features/teams/screens/team_details_screen.dart';
 import 'package:ctfinfo/features/teams/screens/team_list_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +34,15 @@ class RouteGenerator {
           builder: (context) => const TeamListScreen(),
           settings: routeSetting,
         );
+
+        case TeamDetailsScreen.id:
+          return MaterialPageRoute(
+            builder: (context) {
+              final teamId = args;
+              return TeamDetailsScreen(
+                teamId: teamId.toString(),);
+            },
+            settings: routeSetting,);
 
       default:
         return MaterialPageRoute(
