@@ -14,7 +14,7 @@ class TeamProvider extends ChangeNotifier {
   dynamic _data2024;
   dynamic get data2024 => _data2024;
 
-  set setData2024(dynamic value){
+  set setData2024(dynamic value) {
     _data2024 = value;
     notifyListeners();
   }

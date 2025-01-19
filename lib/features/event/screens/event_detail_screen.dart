@@ -256,4 +256,3 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     );
   }
 }
-

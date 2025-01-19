@@ -35,14 +35,16 @@ class RouteGenerator {
           settings: routeSetting,
         );
 
-        case TeamDetailsScreen.id:
-          return MaterialPageRoute(
-            builder: (context) {
-              final teamId = args;
-              return TeamDetailsScreen(
-                teamId: teamId.toString(),);
-            },
-            settings: routeSetting,);
+      case TeamDetailsScreen.id:
+        return MaterialPageRoute(
+          builder: (context) {
+            final teamId = args;
+            return TeamDetailsScreen(
+              teamId: teamId.toString(),
+            );
+          },
+          settings: routeSetting,
+        );
 
       default:
         return MaterialPageRoute(

@@ -71,4 +71,3 @@ class _TeamListScreenState extends State<TeamListScreen> {
     );
   }
 }
-

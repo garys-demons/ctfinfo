@@ -12,7 +12,6 @@ class RestClient {
       final response = await http.get(Uri.parse(EndPoints.baseUrl + path));
       debugPrint(response.body);
 
-
       debugPrint("---------------------------");
       debugPrint("Response : ${EndPoints.baseUrl + path}");
       debugPrint("Response : ${response.body.toString()}");
