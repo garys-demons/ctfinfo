@@ -135,10 +135,15 @@ class _TeamDetailsScreenState extends State<TeamDetailsScreen> {
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(width: 10),
-                      CustomText(
-                        txtTitle: value.teamDetail.country,
-                        style: TextStyle(fontSize: 16),
-                      ),
+                      value.teamDetail.country == ""
+                          ? CustomText(
+                              txtTitle: StringConstants.notAvailable,
+                              style: TextStyle(fontSize: 16),
+                            )
+                          : CustomText(
+                              txtTitle: value.teamDetail.country,
+                              style: TextStyle(fontSize: 16),
+                            ),
                     ],
                   ),
                   //rating place
@@ -153,10 +158,15 @@ class _TeamDetailsScreenState extends State<TeamDetailsScreen> {
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(width: 10),
-                      CustomText(
-                        txtTitle: rating2024.ratingPlace.toString(),
-                        style: TextStyle(fontSize: 16),
-                      ),
+                      rating2024['rating_place'] != null
+                          ? CustomText(
+                              txtTitle: rating2024['rating_place'].toString(),
+                              style: TextStyle(fontSize: 16),
+                            )
+                          : CustomText(
+                              txtTitle: StringConstants.notAvailable,
+                              style: TextStyle(fontSize: 16),
+                            ),
                     ],
                   ),
                   //organizer points
@@ -171,10 +181,16 @@ class _TeamDetailsScreenState extends State<TeamDetailsScreen> {
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(width: 10),
-                      CustomText(
-                        txtTitle: rating2024.organizerPoints.toString(),
-                        style: TextStyle(fontSize: 16),
-                      ),
+                      rating2024['organizer_points'] != null
+                          ? CustomText(
+                              txtTitle:
+                                  rating2024['organizer_points'].toString(),
+                              style: TextStyle(fontSize: 16),
+                            )
+                          : CustomText(
+                              txtTitle: StringConstants.notAvailable,
+                              style: TextStyle(fontSize: 16),
+                            ),
                     ],
                   ),
                   //rating points
@@ -189,10 +205,15 @@ class _TeamDetailsScreenState extends State<TeamDetailsScreen> {
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(width: 10),
-                      CustomText(
-                        txtTitle: rating2024.ratingPlace.toString(),
-                        style: TextStyle(fontSize: 16),
-                      ),
+                      rating2024['rating_points'] != null
+                          ? CustomText(
+                              txtTitle: rating2024['rating_points'].toString(),
+                              style: TextStyle(fontSize: 16),
+                            )
+                          : CustomText(
+                              txtTitle: StringConstants.notAvailable,
+                              style: TextStyle(fontSize: 16),
+                            ),
                     ],
                   ),
                   //country place
@@ -207,10 +228,15 @@ class _TeamDetailsScreenState extends State<TeamDetailsScreen> {
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(width: 10),
-                      CustomText(
-                        txtTitle: rating2024.countryPlace.toString(),
-                        style: TextStyle(fontSize: 16),
-                      ),
+                      rating2024['country_place'] != null
+                          ? CustomText(
+                              txtTitle: rating2024['country_place'].toString(),
+                              style: TextStyle(fontSize: 16),
+                            )
+                          : CustomText(
+                              txtTitle: StringConstants.notAvailable,
+                              style: TextStyle(fontSize: 16),
+                            ),
                     ],
                   ),
                 ],

@@ -36,7 +36,7 @@ class TeamProvider extends ChangeNotifier {
     try {
       final response = await _repository.getTeamDetail(teamId);
       _teamDetail = TeamDetailModel.fromJson(response);
-      data2024(_teamDetail.rating!["2024"]);
+      data2024 = response["rating"]["2024"];
       notifyListeners();
       return true;
     } catch (e) {
