@@ -1,21 +1,21 @@
 class TopTeamsModel {
-  List<Year>? l2024;
+  List<Year>? l2025;
 
-  TopTeamsModel({this.l2024});
+  TopTeamsModel({this.l2025});
 
   TopTeamsModel.fromJson(Map<String, dynamic> json) {
-    if (json['2024'] != null) {
-      l2024 = <Year>[];
-      json['2024'].forEach((v) {
-        l2024!.add(Year.fromJson(v));
+    if (json['2025'] != null) {
+      l2025 = <Year>[];
+      json['2025'].forEach((v) {
+        l2025!.add(Year.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    if (l2024 != null) {
-      data['2024'] = l2024!.map((v) => v.toJson()).toList();
+    if (l2025 != null) {
+      data['2025'] = l2025!.map((v) => v.toJson()).toList();
     }
     return data;
   }
