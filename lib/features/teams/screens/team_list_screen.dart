@@ -27,7 +27,7 @@ class _TeamListScreenState extends State<TeamListScreen> {
         create: (context) => _teamProvider,
         child: Consumer<TeamProvider>(
           builder: (context, value, child) {
-            if (value.topTeams.l2024 == null) {
+            if (value.topTeams.l2025 == null) {
               return Center(
                 child: CircularProgressIndicator(),
               );
@@ -57,12 +57,12 @@ class _TeamListScreenState extends State<TeamListScreen> {
             ListView.builder(
               physics: ScrollPhysics(),
               shrinkWrap: true,
-              itemCount: value.topTeams.l2024!.length,
+              itemCount: value.topTeams.l2025!.length,
               itemBuilder: (context, index) {
                 return TeamCard(
-                    teamName: value.topTeams.l2024![index].teamName ?? "",
-                    teamPoints: value.topTeams.l2024![index].points.toString(),
-                    teamId: value.topTeams.l2024![index].teamId.toString());
+                    teamName: value.topTeams.l2025![index].teamName ?? "",
+                    teamPoints: value.topTeams.l2025![index].points.toString(),
+                    teamId: value.topTeams.l2025![index].teamId.toString());
               },
             ),
           ],
