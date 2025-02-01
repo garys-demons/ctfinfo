@@ -20,5 +20,5 @@ class StringConstants {
   static const String ratingPoints = "Rating Points";
   static const String countryPlace = "Country Place";
   static const String organizerPoints = "Organizer Points";
-  static const String notAvailable = "Not Available";
+  static const String notAvailable = "N/A";
 }

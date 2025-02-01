@@ -3,6 +3,8 @@ import 'package:ctfinfo/features/event/screens/event_detail_screen.dart';
 import 'package:ctfinfo/features/event/screens/event_screen.dart';
 import 'package:ctfinfo/features/teams/screens/team_details_screen.dart';
 import 'package:ctfinfo/features/teams/screens/team_list_screen.dart';
+import 'package:ctfinfo/features/teams/screens/teamid_input_screen.dart';
+import 'package:ctfinfo/features/teams/screens/your_team_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -45,6 +47,18 @@ class RouteGenerator {
               teamId: teamId.toString(),
             );
           },
+          settings: routeSetting,
+        );
+
+      case YourTeamScreen.id:
+        return MaterialPageRoute(
+          builder: (context) => YourTeamScreen(),
+          settings: routeSetting,
+        );
+
+      case TeamidInputScreen.id:
+        return MaterialPageRoute(
+          builder: (context) => const TeamidInputScreen(),
           settings: routeSetting,
         );
 
