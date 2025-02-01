@@ -39,6 +39,8 @@ dependencies:
   provider: ^6.1.2
   footer: ^0.0.4
   url_launcher: ^6.3.1
+  shared_preferences: ^2.4.0
+  sliding_up_panel: ^2.0.0+1
 
 dev_dependencies:
   flutter_test:
