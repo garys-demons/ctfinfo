@@ -14,29 +14,24 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+
   static bool isTeamIdSaved = SharedPreferencesDemo.isTeamIdSaved();
-  Widget teamWidget = isTeamIdSaved ? YourTeamScreen() : TeamidInputScreen();
   int _selectedIndex = 0;
-  static const List<Widget> _navBarScreens = <Widget>[
+  static final List<Widget> _navBarScreens = isTeamIdSaved ? <Widget>[
     EventScreen(),
     TeamListScreen(),
     Center(
         child: Text("Write Ups (Coming Soon)", style: TextStyle(fontSize: 30))),
     YourTeamScreen(),
+  ] : <Widget>[
+    EventScreen(),
+    TeamListScreen(),
+    Center(
+        child: Text("Write Ups (Coming Soon)", style: TextStyle(fontSize: 30))),
+    TeamidInputScreen(),
   ];
 
   void _onMenuItemSelected(int index) async {
-    // if (index == 3){
-    //   bool isTeamIdSaved = SharedPreferencesDemo.isTeamIdSaved();
-    //   if (!isTeamIdSaved){
-    //     Navigator.pushNamed(
-    //       context, 
-    //       TeamidInputScreen.id,
-    //       );
-    //   return;
-    //   }
-    // } 
-
     setState(() {
       _selectedIndex = index;
     });
