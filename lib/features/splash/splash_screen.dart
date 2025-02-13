@@ -25,14 +25,13 @@ class _SplashScreenState extends State<SplashScreen> {
     bool isTeamIdSaved = SharedPreferencesDemo.isTeamIdSaved();
 
     Timer(
-      const Duration(seconds: 2), 
-      () => Navigator.pushReplacement(
-        context, 
-        MaterialPageRoute(
-          builder: (context) => 
-          isTeamIdSaved ? const BottomNavBar() : const TeamidInputScreen())
-      )
-    );
+        const Duration(seconds: 2),
+        () => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => isTeamIdSaved
+                    ? const BottomNavBar()
+                    : const TeamidInputScreen())));
   }
 
   @override

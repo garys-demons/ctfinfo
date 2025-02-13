@@ -78,7 +78,8 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: CustomText(
                 txtTitle: 'Your Team',
-                style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(height: 12),
@@ -89,7 +90,9 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                 children: [
                   CircleAvatar(
                     //logo
-                    backgroundImage: (teamId != null && value.teamDetail.logo != null && value.teamDetail.logo!.isNotEmpty)
+                    backgroundImage: (teamId != null &&
+                            value.teamDetail.logo != null &&
+                            value.teamDetail.logo!.isNotEmpty)
                         ? NetworkImage(value.teamDetail.logo!)
                         : const NetworkImage(
                             "https://images.ctfassets.net/aoyx73g9h2pg/3H8sLBKCH7xIph1YZmjFvd/8292d73649a27a4eb65724fa1df629f7/10684-1024x575.jpg?w=3840&q=100"),
@@ -98,7 +101,9 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                   const SizedBox(height: 20.0),
                   CustomText(
                     //team name
-                    txtTitle: (teamId != null && value.teamDetail.name != null) ? value.teamDetail.name! : "Team Name",
+                    txtTitle: (teamId != null && value.teamDetail.name != null)
+                        ? value.teamDetail.name!
+                        : "Team Name",
                     textOverflow: TextOverflow.visible,
                     style: const TextStyle(
                       fontSize: 20,
@@ -112,7 +117,8 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                     children: [
                       const CustomText(
                         txtTitle: "${StringConstants.teamId} :",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(width: 10),
                       CustomText(
@@ -127,11 +133,14 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                     children: [
                       const CustomText(
                         txtTitle: "${StringConstants.country} :",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(width: 10),
                       CustomText(
-                        txtTitle: (teamId != null && value.teamDetail.country != null && value.teamDetail.country!.isNotEmpty)
+                        txtTitle: (teamId != null &&
+                                value.teamDetail.country != null &&
+                                value.teamDetail.country!.isNotEmpty)
                             ? value.teamDetail.country!
                             : StringConstants.notAvailable,
                         style: const TextStyle(fontSize: 16),
@@ -144,11 +153,14 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                     children: [
                       const CustomText(
                         txtTitle: "${StringConstants.ratingPlace} :",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(width: 10),
                       CustomText(
-                        txtTitle: (teamId != null && rating2024 != null && rating2024['rating_place'] != null)
+                        txtTitle: (teamId != null &&
+                                rating2024 != null &&
+                                rating2024['rating_place'] != null)
                             ? rating2024['rating_place'].toString()
                             : StringConstants.notAvailable,
                         style: const TextStyle(fontSize: 16),
@@ -161,11 +173,14 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                     children: [
                       const CustomText(
                         txtTitle: "${StringConstants.organizerPoints} :",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(width: 10),
                       CustomText(
-                        txtTitle: (teamId != null && rating2024 != null && rating2024['organizer_points'] != null)
+                        txtTitle: (teamId != null &&
+                                rating2024 != null &&
+                                rating2024['organizer_points'] != null)
                             ? rating2024['organizer_points'].toString()
                             : StringConstants.notAvailable,
                         style: const TextStyle(fontSize: 16),
@@ -178,11 +193,14 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                     children: [
                       const CustomText(
                         txtTitle: "${StringConstants.ratingPoints} :",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(width: 10),
                       CustomText(
-                        txtTitle: (teamId != null && rating2024 != null && rating2024['rating_points'] != null)
+                        txtTitle: (teamId != null &&
+                                rating2024 != null &&
+                                rating2024['rating_points'] != null)
                             ? rating2024['rating_points'].toString()
                             : StringConstants.notAvailable,
                         style: const TextStyle(fontSize: 16),
@@ -195,11 +213,14 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                     children: [
                       const CustomText(
                         txtTitle: "${StringConstants.countryPlace} :",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(width: 10),
                       CustomText(
-                        txtTitle: (teamId != null && rating2024 != null && rating2024['country_place'] != null)
+                        txtTitle: (teamId != null &&
+                                rating2024 != null &&
+                                rating2024['country_place'] != null)
                             ? rating2024['country_place'].toString()
                             : StringConstants.notAvailable,
                         style: const TextStyle(fontSize: 16),
@@ -209,77 +230,76 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 200,),
+            const SizedBox(
+              height: 200,
+            ),
             Footer(
               backgroundColor: Colors.transparent,
               child: Center(
                 child: _buttons(),
-              )
-              )
+              ),
+            )
           ],
         ),
       ),
     );
   }
 
-  Widget _buttons(){
-    if (teamId != null){
+  Widget _buttons() {
+    if (teamId != null) {
       return ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blueAccent,
-          foregroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blueAccent,
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
           onPressed: () {
             setState(() {
               SharedPreferencesDemo.clear();
             });
-          }, 
+          },
           child: CustomText(
-          txtTitle: 'Clear Data',
-          )
-        );
-      }
-    else{
+            txtTitle: 'Clear Data',
+          ));
+    } else {
       return ElevatedButton(
-        style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.blueAccent,
-        foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blueAccent,
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
-        ),
-        onPressed: _showSettingsPanel, 
-        child: CustomText(
-          txtTitle: 'Add Team',
-          )
-        );
+          onPressed: _showSettingsPanel,
+          child: CustomText(
+            txtTitle: 'Add Team',
+          ));
     }
   }
 
-  void _showSettingsPanel(){
+  void _showSettingsPanel() {
     showGeneralDialog(
-    context: context,
-    barrierDismissible: true,
-    barrierLabel: "Your Team",
-    pageBuilder: (context, animation, secondaryAnimation) {
-      return Center(
-      child: Material(
-        child: Container(
-          width: 350,
-          height: 400,
-          padding: EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(50),
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: "Your Team",
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return Center(
+          child: Material(
+            child: Container(
+              width: 350,
+              height: 400,
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: TeamidInputScreen(),
+            ),
           ),
-          child: TeamidInputScreen(),
-        ),
-      ),
+        );
+      },
     );
-    },
-  );
   }
-  
 }

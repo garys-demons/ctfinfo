@@ -26,7 +26,8 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
 
   Future<void> _initializeTeamId() async {
     await SharedPreferencesDemo.init();
-    int savedTeamId = SharedPreferencesDemo.getInt(SharedPreferencesDemo.teamId);
+    int savedTeamId =
+        SharedPreferencesDemo.getInt(SharedPreferencesDemo.teamId);
     if (savedTeamId > 0) {
       setState(() {
         teamId = savedTeamId;
@@ -39,77 +40,83 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
     int teamId = int.tryParse(_teamIdController.text) ?? 0;
     await SharedPreferencesDemo.setInt(SharedPreferencesDemo.teamId, teamId);
     await SharedPreferencesDemo.saveTeamId();
-      }
-  
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 30.0,
-              ),
-              Row(
+          child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 30.0,
+            ),
+            Row(
+              children: [
+                const SizedBox(width: 10.0),
+                const CustomText(
+                  txtTitle: "Your Team",
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(width: 10.0),
-                  const CustomText(
-                    txtTitle: "Your Team",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  const SizedBox(
+                    height: 20.0,
                   ),
-                ],
-              ),
-              Form(
-                key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 20.0,),
-                    TextFormField(
+                  TextFormField(
                     controller: _teamIdController,
                     decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black, width: 2.0)
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurple, width: 2.0)
-                      )
-                    ).copyWith(hintText: 'Enter Your CTF TeamID'),
+                            fillColor: Colors.white,
+                            filled: true,
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Colors.black, width: 2.0)),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Colors.deepPurple, width: 2.0)))
+                        .copyWith(hintText: 'Enter Your CTF TeamID'),
                     onChanged: (value) {
                       setState(() {
                         teamId = int.tryParse(value) ?? 0;
                       });
                     },
                   ),
-                  const SizedBox(height: 20.0,),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                       ElevatedButton(
+                      ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blueAccent,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
-                            ),
-                            ),
+                          ),
+                        ),
                         onPressed: () async {
                           await _saveTeamId();
                           // Navigator.pushNamed(
-                          //   context, 
+                          //   context,
                           //   BottomNavBar.id);
                         },
                         child: CustomText(
                           txtTitle: 'Save',
                         ),
                       ),
-                      const SizedBox(width: 10.0,),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blueAccent,
@@ -119,9 +126,7 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(
-                            context, 
-                            BottomNavBar.id);
+                          Navigator.pushNamed(context, BottomNavBar.id);
                         },
                         child: CustomText(
                           txtTitle: 'Add Later',
@@ -129,13 +134,12 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
                       ),
                     ],
                   )
-                  ],
-                ),
-                )
-            ],
-          ),
-        )
+                ],
+              ),
+            )
+          ],
         ),
+      )),
     );
   }
 }
