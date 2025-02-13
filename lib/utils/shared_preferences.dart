@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:ctfinfo/features/teams/models/team_detail_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class SharedPreferencesDemo {
   static SharedPreferences? _prefs;
 
@@ -18,7 +17,7 @@ class SharedPreferencesDemo {
       await _prefs!.setInt(key, value);
 
   static Future<bool> setTeamDetail(String key, TeamDetailModel data) async {
-    return await setModel(key,data);
+    return await setModel(key, data);
   }
 
   static Future<void> saveTeamId() async {
@@ -50,5 +49,4 @@ class SharedPreferencesDemo {
   static Future<bool> remove(String key) async => await _prefs!.remove(key);
 
   static Future<bool> clear() async => await _prefs!.clear();
-
 }
