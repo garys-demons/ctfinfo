@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Katana",
+        "description": "This repository aims to hold suggestions (and hopefully/eventually code) for CTF challenges. The project is nicknamed Katana.",
+        "url": "https://github.com/JohnHammond/ctf-katana"
+    },
+    {
+        "id": 1,
+        "name": "GitHub",
+        "description": "GitHub platform",
+        "url": "https://github.com/youhaveme9/ctfresources"
+    },
+    {
+        "id": 1,
+        "name": "GitHub",
+        "description": "GitHub platform",
+        "url": "https://github.com/youhaveme9/ctfresources"
+    },
+    {
+        "id": 1,
+        "name": "GitHub",
+        "description": "GitHub platform",
+        "url": "https://github.com/youhaveme9/ctfresources"
+    },
+    {
+        "id": 1,
+        "name": "GitHub",
+        "description": "GitHub platform",
+        "url": "https://github.com/youhaveme9/ctfresources"
+    },
+    {
+        "id": 1,
+        "name": "GitHub",
+        "description": "GitHub platform",
+        "url": "https://github.com/youhaveme9/ctfresources"
+    }
+]
