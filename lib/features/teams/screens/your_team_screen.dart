@@ -231,7 +231,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
               ),
             ),
             const SizedBox(
-              height: 200,
+              height: 150,
             ),
             Footer(
               backgroundColor: Colors.transparent,
@@ -246,37 +246,35 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
   }
 
   Widget _buttons() {
-    if (teamId != null) {
-      return ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blueAccent,
-            foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+    return teamId != null
+        ? ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blueAccent,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
-          ),
-          onPressed: () {
-            setState(() {
-              SharedPreferencesDemo.clear();
-            });
-          },
-          child: CustomText(
-            txtTitle: 'Clear Data',
-          ));
-    } else {
-      return ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blueAccent,
-            foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+            onPressed: () {
+              setState(() {
+                SharedPreferencesDemo.clear();
+              });
+            },
+            child: CustomText(
+              txtTitle: 'Clear Data',
+            ))
+        : ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blueAccent,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
-          ),
-          onPressed: _showSettingsPanel,
-          child: CustomText(
-            txtTitle: 'Add Team',
-          ));
-    }
+            onPressed: _showSettingsPanel,
+            child: CustomText(
+              txtTitle: 'Add Team',
+            ));
   }
 
   void _showSettingsPanel() {
