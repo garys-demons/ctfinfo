@@ -1,5 +1,6 @@
 import 'package:ctfinfo/constants/string_constants.dart';
 import 'package:ctfinfo/features/teams/provider/team_provider.dart';
+import 'package:ctfinfo/features/teams/screens/teamid_input_screen.dart';
 import 'package:ctfinfo/utils/shared_preferences.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -233,22 +234,75 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
               height: 200,
             ),
             Footer(
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  onPressed: SharedPreferencesDemo.clear,
-                  child: CustomText(
-                    txtTitle: 'Clear Data',
-                  )),
-            )
+              backgroundColor: Colors.transparent,
+              child: Center(
+                child: _buttons(),
+              )
+             )
           ],
         ),
       ),
     );
   }
+
+  Widget _buttons(){
+    if (teamId != null){
+      return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.blueAccent,
+          foregroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),),
+          ),
+          onPressed: () {
+            setState(() {
+              SharedPreferencesDemo.clear();
+            });
+          }, 
+          child: CustomText(
+          txtTitle: 'Clear Data',
+          )
+        );
+      }
+    else{
+      return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blueAccent,
+        foregroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+        onPressed: _showSettingsPanel, 
+        child: CustomText(
+          txtTitle: 'Add Team',
+          )
+        );
+    }
+  }
+
+  void _showSettingsPanel(){
+    showGeneralDialog(
+    context: context,
+    barrierDismissible: true,
+    barrierLabel: "Your Team",
+    pageBuilder: (context, animation, secondaryAnimation) {
+      return Center(
+      child: Material(
+        child: Container(
+          width: 350,
+          height: 400,
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(50),
+          ),
+          child: TeamidInputScreen(),
+        ),
+      ),
+    );
+    },
+  );
+  }
+  
 }
