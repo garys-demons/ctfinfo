@@ -27,9 +27,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       : <Widget>[
           EventScreen(),
           TeamListScreen(),
-          Center(
-              child: Text("Write Ups (Coming Soon)",
-                  style: TextStyle(fontSize: 30))),
+          ResourcesScreen(),
           TeamidInputScreen(),
         ];
 
