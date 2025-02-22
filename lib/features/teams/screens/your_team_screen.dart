@@ -1,7 +1,5 @@
 import 'package:ctfinfo/constants/string_constants.dart';
 import 'package:ctfinfo/features/teams/provider/team_provider.dart';
-import 'package:ctfinfo/features/teams/screens/teamid_input_screen.dart';
-import 'package:ctfinfo/utils/shared_preferences.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:footer/footer.dart';
@@ -48,6 +46,14 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
 
     setState(() {
       isLoading = false;
+    });
+  }
+
+  Future<void> _clearTeamId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('teamId');
+    setState(() {
+      teamId = null;
     });
   }
 
@@ -100,7 +106,6 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                   ),
                   const SizedBox(height: 20.0),
                   CustomText(
-                    //team name
                     txtTitle: (teamId != null && value.teamDetail.name != null)
                         ? value.teamDetail.name!
                         : "Team Name",
@@ -255,11 +260,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            onPressed: () {
-              setState(() {
-                SharedPreferencesDemo.clear();
-              });
-            },
+            onPressed: _clearTeamId,
             child: CustomText(
               txtTitle: 'Clear Data',
             ))
@@ -274,27 +275,80 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
             onPressed: _showSettingsPanel,
             child: CustomText(
               txtTitle: 'Add Team',
-            ));
+            ),
+          );
   }
 
   void _showSettingsPanel() {
-    showGeneralDialog(
+    showModalBottomSheet(
       context: context,
-      barrierDismissible: true,
-      barrierLabel: "Your Team",
-      pageBuilder: (context, animation, secondaryAnimation) {
-        return Center(
-          child: Material(
-            child: Container(
-              width: 350,
-              height: 400,
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(50),
+      builder: (context) {
+        return Container(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 60),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 50,
               ),
-              child: TeamidInputScreen(),
-            ),
+              const CustomText(
+                txtTitle: 'Enter Your Team ID',
+                style: TextStyle(fontSize: 20),
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.deepPurple, width: 2.0)))
+                    .copyWith(hintText: 'Enter Your CTF TeamID'),
+                onChanged: (value) {
+                  setState(() {
+                    teamId = value;
+                  });
+                },
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blueAccent,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: CustomText(
+                      txtTitle: 'Save',
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10.0,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blueAccent,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: CustomText(
+                      txtTitle: 'Cancel',
+                    ),
+                  ),
+                ],
+              )
+            ],
           ),
         );
       },
