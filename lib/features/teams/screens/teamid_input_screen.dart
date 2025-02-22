@@ -1,5 +1,4 @@
 import 'package:ctfinfo/features/bottonnavbar/bottom_nav_bar.dart';
-// import 'package:ctfinfo/features/teams/screens/your_team_screen.dart';
 import 'package:ctfinfo/utils/shared_preferences.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -106,9 +105,9 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
                         ),
                         onPressed: () async {
                           await _saveTeamId();
-                          // Navigator.pushNamed(
-                          //   context,
-                          //   BottomNavBar.id);
+                          Navigator.pushNamed(
+                            context,
+                            BottomNavBar.id);
                         },
                         child: CustomText(
                           txtTitle: 'Save',
