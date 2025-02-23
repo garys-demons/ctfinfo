@@ -15,7 +15,7 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
   final TextEditingController _teamIdController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  String teamId = '0000';
+  int teamId = 0000;
 
   @override
   void initState() {
@@ -29,7 +29,7 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
         SharedPreferencesDemo.getInt(SharedPreferencesDemo.teamId);
     if (savedTeamId > 0) {
       setState(() {
-        teamId = savedTeamId as String;
+        teamId = savedTeamId;
         _teamIdController.text = teamId.toString();
       });
     }
@@ -45,100 +45,103 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 30.0,
-            ),
-            Row(
+      body: _buildInputDialog(context),
+    );
+  }
+
+  SafeArea _buildInputDialog(BuildContext context) {
+    return SafeArea(
+        child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: 30.0,
+          ),
+          Row(
+            children: [
+              const SizedBox(width: 10.0),
+              const CustomText(
+                txtTitle: "Your Team",
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(width: 10.0),
-                const CustomText(
-                  txtTitle: "Your Team",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                const SizedBox(
+                  height: 20.0,
                 ),
+                TextFormField(
+                  controller: _teamIdController,
+                  decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.black, width: 2.0)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.deepPurple, width: 2.0)))
+                      .copyWith(hintText: 'Enter Your CTF TeamID'),
+                  onChanged: (value) {
+                    setState(() {
+                      teamId = int.tryParse(value) ?? 0;
+                    });
+                  },
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onPressed: () {
+                        _saveTeamId();
+                        Navigator.pop(context);
+                        setState(() {});
+                      },
+                      child: CustomText(
+                        txtTitle: 'Save',
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10.0,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, BottomNavBar.id);
+                      },
+                      child: CustomText(
+                        txtTitle: 'Add Later',
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
-            Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  TextFormField(
-                    controller: _teamIdController,
-                    decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.black, width: 2.0)),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.deepPurple, width: 2.0)))
-                        .copyWith(hintText: 'Enter Your CTF TeamID'),
-                    onChanged: (value) {
-                      setState(() {
-                        teamId = (int.tryParse(value) ?? 0).toString();
-                      });
-                    },
-                  ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueAccent,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        onPressed: () async {
-                          await _saveTeamId();
-                          Navigator.pushNamed(
-                            context,
-                            BottomNavBar.id);
-                        },
-                        child: CustomText(
-                          txtTitle: 'Save',
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10.0,
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueAccent,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, BottomNavBar.id);
-                        },
-                        child: CustomText(
-                          txtTitle: 'Add Later',
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      )),
-    );
+          )
+        ],
+      ),
+    ));
   }
 }

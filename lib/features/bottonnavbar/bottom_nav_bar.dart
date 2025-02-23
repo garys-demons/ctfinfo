@@ -1,9 +1,7 @@
 import 'package:ctfinfo/features/event/screens/event_screen.dart';
 import 'package:ctfinfo/features/resources/screens/resources_screen.dart';
 import 'package:ctfinfo/features/teams/screens/team_list_screen.dart';
-import 'package:ctfinfo/features/teams/screens/teamid_input_screen.dart';
 import 'package:ctfinfo/features/teams/screens/your_team_screen.dart';
-import 'package:ctfinfo/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -15,21 +13,13 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  static bool isTeamIdSaved = SharedPreferencesDemo.isTeamIdSaved();
   int _selectedIndex = 0;
-  static final List<Widget> _navBarScreens = isTeamIdSaved
-      ? <Widget>[
-          EventScreen(),
-          TeamListScreen(),
-          ResourcesScreen(),
-          YourTeamScreen(),
-        ]
-      : <Widget>[
-          EventScreen(),
-          TeamListScreen(),
-          ResourcesScreen(),
-          TeamidInputScreen(),
-        ];
+  static final List<Widget> _navBarScreens = <Widget>[
+    EventScreen(),
+    TeamListScreen(),
+    ResourcesScreen(),
+    YourTeamScreen(),
+  ];
 
   void _onMenuItemSelected(int index) async {
     setState(() {

@@ -1,32 +1,21 @@
-// class Validator {
-//   static bool isVaildEmail({required String email}) {
-//     var pattern =
-//         r'(^[a-zA-Z\u0900-\u097F0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
-//     var regExp = RegExp(pattern);
-//     return regExp.hasMatch(email);
-//   }
-
-//   static bool isValidUsername({required String? username}) {
-//     if (username == null || username.trim().isEmpty) {
-//       return false;
-//     }
-//     final regex = RegExp(r'^[a-zA-Z0-9._]+$');
-//     if (!regex.hasMatch(username)) {
-//       return false;
-//     }
-//     return true;
-//   }
-// }
+import 'package:ctfinfo/api/end_points.dart';
+import 'package:http/http.dart' as http;
 
 class Validator {
-  
-  static bool isValidId({
-    required int? teamId}) {
-    if (teamId == null || ){
+
+  Future isValidId({required String? teamId}) async {
+    final response = await http.get(Uri.parse("${EndPoints.baseUrl}/teams/$teamId"));
+    if (teamId == null || response.statusCode == 404){
       return false;
     }
     else{
       return true;
     }
   }
+
+  static bool isDigit({required String? teamId}) {
+    RegExp regExp = RegExp(r'^\d{0,10}$');
+    return regExp.hasMatch(teamId!);
+  }
+
 }
