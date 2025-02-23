@@ -260,11 +260,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          onPressed: () {
-            setState(() {
-              SharedPreferencesDemo.clear();
-            });
-          },
+          onPressed: _clearTeamId,
           child: CustomText(
             txtTitle: 'Clear Data',
           ));
