@@ -16,6 +16,9 @@ class SharedPreferencesDemo {
   static Future<bool> setInt(String key, int value) async =>
       await _prefs!.setInt(key, value);
 
+  static Future<bool> setString(String key, String value) async =>
+      await _prefs!.setString(key, value);
+
   static Future<bool> setTeamDetail(String key, TeamDetailModel data) async {
     return await setModel(key, data);
   }
@@ -45,6 +48,8 @@ class SharedPreferencesDemo {
   }
 
   static int getInt(String key) => _prefs!.getInt(key) ?? 0;
+
+  static String getString(String key) => _prefs!.getString(key) ?? '';
 
   static Future<bool> remove(String key) async => await _prefs!.remove(key);
 
