@@ -93,6 +93,12 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
                       teamId = (int.tryParse(value) ?? 0).toString();
                     });
                   },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your CTF team ID';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(
                   height: 20.0,
@@ -109,9 +115,11 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
                         ),
                       ),
                       onPressed: () {
-                        _saveTeamId();
-                        Navigator.pop(context);
-                        setState(() {});
+                        if (_formKey.currentState!.validate()) {
+                          _saveTeamId();
+                          Navigator.pop(context);
+                          setState(() {});
+                        }
                       },
                       child: CustomText(
                         txtTitle: 'Save',

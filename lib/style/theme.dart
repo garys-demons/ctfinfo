@@ -10,11 +10,10 @@ class CustomTheme {
   );
 
   static final errorUnderlineBorder = UnderlineInputBorder(
-    borderSide: BorderSide(
-      color: Pallet.errorColour,
-      width: 2.0,
-    )
-  );
+      borderSide: BorderSide(
+    color: Pallet.errorColour,
+    width: 2.0,
+  ));
 
   static ThemeData darkTheme() {
     return ThemeData(
