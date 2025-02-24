@@ -1,8 +1,6 @@
 import 'dart:async';
-
 import 'package:ctfinfo/constants/image_constants.dart';
 import 'package:ctfinfo/features/bottonnavbar/bottom_nav_bar.dart';
-import 'package:ctfinfo/features/teams/screens/teamid_input_screen.dart';
 import 'package:ctfinfo/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
@@ -21,17 +19,14 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _navigateToNextScreen() async {
-    await SharedPreferencesDemo.init();
-    bool isTeamIdSaved = SharedPreferencesDemo.isTeamIdSaved();
+    await SharedPreferencesDemo.init();  
 
     Timer(
         const Duration(seconds: 2),
         () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (context) => isTeamIdSaved
-                    ? const BottomNavBar()
-                    : const TeamidInputScreen())));
+                builder: (context) => const BottomNavBar())));
   }
 
   @override
