@@ -1,5 +1,6 @@
 import 'package:ctfinfo/constants/string_constants.dart';
 import 'package:ctfinfo/features/teams/provider/team_provider.dart';
+import 'package:ctfinfo/utils/shared_preferences.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:footer/footer.dart';
@@ -17,36 +18,42 @@ class YourTeamScreen extends StatefulWidget {
 class _YourTeamScreenState extends State<YourTeamScreen> {
   String? teamId;
   late TeamProvider _teamProvider;
-  bool isLoading = true;
+  final TextEditingController _teamIdController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _teamProvider = Provider.of<TeamProvider>(context, listen: false);
-    _loadTeamId();
+    _loadTeamDetails();
+    _initializeTeamId();
   }
 
-  Future<void> _loadTeamId() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var storedTeamId = prefs.get('teamId');
-
-    setState(() {
-      if (storedTeamId is String) {
-        teamId = storedTeamId;
-      } else if (storedTeamId is int) {
-        teamId = storedTeamId.toString();
-      } else {
-        teamId = null;
-      }
-    });
-
-    if (teamId != null) {
-      await _teamProvider.getTeamDetail(teamId!);
+  Future<void> _initializeTeamId() async {
+    await SharedPreferencesDemo.init();
+    String savedTeamId =
+        SharedPreferencesDemo.getString(SharedPreferencesDemo.teamId);
+    if (savedTeamId.isNotEmpty) {
+      setState(() {
+        teamId = savedTeamId;
+      });
     }
+  }
 
-    setState(() {
-      isLoading = false;
-    });
+  Future<void> _saveTeamId() async {
+    String teamId = _teamIdController.text;
+    await SharedPreferencesDemo.setString(SharedPreferencesDemo.teamId, teamId);
+    await SharedPreferencesDemo.saveTeamId();
+    _loadTeamDetails();
+    setState(() {});
+  }
+
+  Future<void> _loadTeamDetails() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? storedTeamId = prefs.getString('teamId');
+
+    if (storedTeamId != null) {
+      await _teamProvider.getTeamDetail(storedTeamId);
+    }
   }
 
   Future<void> _clearTeamId() async {
@@ -61,13 +68,14 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: isLoading
-          ? const Center(child: CircularProgressIndicator())
+      body
+          // : isLoading
+          //     ? const Center(child: CircularProgressIndicator())
           : Consumer<TeamProvider>(
-              builder: (context, teamProvider, child) {
-                return _buildUI(teamProvider);
-              },
-            ),
+        builder: (context, teamProvider, child) {
+          return _buildUI(teamProvider);
+        },
+      ),
     );
   }
 
@@ -299,16 +307,13 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                 height: 20.0,
               ),
               TextField(
+                controller: _teamIdController,
                 decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.deepPurple, width: 2.0)))
-                    .copyWith(hintText: 'Enter Your CTF TeamID'),
-                onChanged: (value) {
-                  setState(() {
-                    teamId = value;
-                  });
-                },
+                  border: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Colors.deepPurple, width: 2.0),
+                  ),
+                ).copyWith(hintText: 'Enter Your CTF TeamID'),
               ),
               const SizedBox(
                 height: 20.0,
@@ -324,7 +329,11 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      _saveTeamId();
+                      Navigator.pop(context);
+                      setState(() {});
+                    },
                     child: CustomText(
                       txtTitle: 'Save',
                     ),
