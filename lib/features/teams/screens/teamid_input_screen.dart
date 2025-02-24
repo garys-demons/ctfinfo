@@ -15,7 +15,7 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
   final TextEditingController _teamIdController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  int teamId = 0000;
+  String teamId = '0000';
 
   @override
   void initState() {
@@ -29,7 +29,7 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
         SharedPreferencesDemo.getInt(SharedPreferencesDemo.teamId);
     if (savedTeamId > 0) {
       setState(() {
-        teamId = savedTeamId;
+        teamId = savedTeamId as String;
         _teamIdController.text = teamId.toString();
       });
     }
@@ -90,7 +90,7 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
                       .copyWith(hintText: 'Enter Your CTF TeamID'),
                   onChanged: (value) {
                     setState(() {
-                      teamId = int.tryParse(value) ?? 0;
+                      teamId = (int.tryParse(value) ?? 0).toString();
                     });
                   },
                 ),
