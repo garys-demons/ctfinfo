@@ -2,11 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:ctfinfo/style/pallet.dart';
 
 class CustomTheme {
-  static final underlinBorder = UnderlineInputBorder(
+  static final underlineBorder = UnderlineInputBorder(
     borderSide: BorderSide(
       color: Pallet.greenColour,
       width: 2.0,
     ),
+  );
+
+  static final errorUnderlineBorder = UnderlineInputBorder(
+    borderSide: BorderSide(
+      color: Pallet.errorColour,
+      width: 2.0,
+    )
   );
 
   static ThemeData darkTheme() {
@@ -52,9 +59,13 @@ class CustomTheme {
             fontSize: 20.0,
             color: Pallet.greenColour,
           ),
+          errorStyle: TextStyle(
+            fontSize: 15.0,
+            color: Pallet.errorColour,
+          ),
           isDense: true,
-          focusedBorder: underlinBorder,
-          enabledBorder: underlinBorder,
+          focusedBorder: underlineBorder,
+          enabledBorder: underlineBorder,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
