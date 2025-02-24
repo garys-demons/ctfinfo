@@ -1,6 +1,7 @@
 import 'package:ctfinfo/constants/string_constants.dart';
 import 'package:ctfinfo/features/teams/provider/team_provider.dart';
 import 'package:ctfinfo/utils/shared_preferences.dart';
+import 'package:ctfinfo/utils/validator.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:footer/footer.dart';
@@ -19,6 +20,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
   String? teamId;
   late TeamProvider _teamProvider;
   final TextEditingController _teamIdController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -294,71 +296,85 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
       builder: (context) {
         return Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 60),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-              const CustomText(
-                txtTitle: 'Enter Your Team ID',
-                style: TextStyle(fontSize: 20),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              TextField(
-                controller: _teamIdController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.deepPurple, width: 2.0),
-                  ),
-                ).copyWith(hintText: 'Enter Your CTF TeamID'),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blueAccent,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 50,
+                ),
+                const CustomText(
+                  txtTitle: 'Enter Your Team ID',
+                  style: TextStyle(fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                TextFormField(
+                  controller: _teamIdController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.deepPurple, width: 2.0),
+                    ),
+                  ).copyWith(hintText: 'Enter Your CTF TeamID'),
+                  validator: (value) {
+                    if (value == null || value.isEmpty){
+                      return 'Please enter your CTF team ID';
+                    }
+                    else if (!Validator.isDigit(teamId: value)){
+                      return 'Please enter your valid CTF team ID';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()){
+                          _saveTeamId();
+                          Navigator.pop(context);
+                          setState(() {});
+                        }
+                      },
+                      child: CustomText(
+                        txtTitle: 'Save',
                       ),
                     ),
-                    onPressed: () {
-                      _saveTeamId();
-                      Navigator.pop(context);
-                      setState(() {});
-                    },
-                    child: CustomText(
-                      txtTitle: 'Save',
+                    const SizedBox(
+                      width: 10.0,
                     ),
-                  ),
-                  const SizedBox(
-                    width: 10.0,
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blueAccent,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: CustomText(
+                        txtTitle: 'Cancel',
                       ),
                     ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: CustomText(
-                      txtTitle: 'Cancel',
-                    ),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
         );
       },

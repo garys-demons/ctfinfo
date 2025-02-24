@@ -2,7 +2,7 @@ import 'package:ctfinfo/api/end_points.dart';
 import 'package:http/http.dart' as http;
 
 class Validator {
-  Future isValidId({required String? teamId}) async {
+  Future<bool> isValidId({required String? teamId}) async {
     final response =
         await http.get(Uri.parse("${EndPoints.baseUrl}/teams/$teamId"));
     if (teamId == null || response.statusCode == 404) {
