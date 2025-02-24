@@ -94,7 +94,7 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
                     });
                   },
                   validator: (value) {
-                    if (value == null || value.isEmpty){
+                    if (value == null || value.isEmpty) {
                       return 'Please enter your CTF team ID';
                     }
                     return null;
@@ -115,7 +115,7 @@ class _TeamidInputScreenState extends State<TeamidInputScreen> {
                         ),
                       ),
                       onPressed: () {
-                        if (_formKey.currentState!.validate()){
+                        if (_formKey.currentState!.validate()) {
                           _saveTeamId();
                           Navigator.pop(context);
                           setState(() {});

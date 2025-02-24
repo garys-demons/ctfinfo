@@ -319,10 +319,9 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                     ),
                   ).copyWith(hintText: 'Enter Your CTF TeamID'),
                   validator: (value) {
-                    if (value == null || value.isEmpty){
+                    if (value == null || value.isEmpty) {
                       return 'Please enter your CTF team ID';
-                    }
-                    else if (!Validator.isDigit(teamId: value)){
+                    } else if (!Validator.isDigit(teamId: value)) {
                       return 'Please enter your valid CTF team ID';
                     }
                     return null;
@@ -343,7 +342,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                         ),
                       ),
                       onPressed: () {
-                        if (_formKey.currentState!.validate()){
+                        if (_formKey.currentState!.validate()) {
                           _saveTeamId();
                           Navigator.pop(context);
                           setState(() {});
