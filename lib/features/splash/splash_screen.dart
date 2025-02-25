@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:ctfinfo/constants/image_constants.dart';
 import 'package:ctfinfo/features/bottonnavbar/bottom_nav_bar.dart';
+import 'package:ctfinfo/style/pallet.dart';
 import 'package:ctfinfo/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Pallet.blackColour,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
