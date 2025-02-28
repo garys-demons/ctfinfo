@@ -18,10 +18,10 @@ A mobile app that keep you updated about latest CTFs and its resources (Under de
 
 ## Screenshots 
 
-<img src="https://github.com/user-attachments/assets/ad3fb1c3-8f76-4fa2-9be6-5ab4f7239b20" height="500">
-<img src="https://github.com/user-attachments/assets/df835580-977c-4592-9f3e-3c7288dc08da" height="500">
-<img src="https://github.com/user-attachments/assets/843a1af4-cdad-4891-825b-941f0f38e11f" height="500">
-<img src="https://github.com/user-attachments/assets/c90dc879-8c3c-4b7d-b7d9-b9eb6e6338c7" height="500">
+<img src="https://github.com/user-attachments/assets/ad3fb1c3-8f76-4fa2-9be6-5ab4f7239b20" height="450">
+<img src="https://github.com/user-attachments/assets/df835580-977c-4592-9f3e-3c7288dc08da" height="450">
+<img src="https://github.com/user-attachments/assets/843a1af4-cdad-4891-825b-941f0f38e11f" height="450">
+<img src="https://github.com/user-attachments/assets/c90dc879-8c3c-4b7d-b7d9-b9eb6e6338c7" height="450">
 
 <h2 align='center'> Project maintainers </h2>
 <table align='center'>
