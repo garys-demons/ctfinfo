@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:ctfinfo/features/teams/models/team_detail_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPreferencesDemo {
+class SharedPreferencesUtils {
   static SharedPreferences? _prefs;
 
   static String teamId = 'teamId';

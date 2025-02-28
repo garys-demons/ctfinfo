@@ -1,6 +1,7 @@
 import 'package:ctfinfo/features/teams/models/team_detail_model.dart';
 import 'package:ctfinfo/features/teams/models/top_teams_model.dart';
 import 'package:ctfinfo/features/teams/repository/team_repository.dart';
+import 'package:ctfinfo/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 class TeamProvider extends ChangeNotifier {
@@ -10,6 +11,9 @@ class TeamProvider extends ChangeNotifier {
 
   TeamDetailModel _teamDetail = TeamDetailModel();
   TeamDetailModel get teamDetail => _teamDetail;
+
+  TeamDetailModel _myTeamDetail = TeamDetailModel();
+  TeamDetailModel get myTeamDetail => _myTeamDetail;
 
   dynamic _data2024;
   dynamic get data2024 => _data2024;
@@ -37,6 +41,24 @@ class TeamProvider extends ChangeNotifier {
       final response = await _repository.getTeamDetail(teamId);
       _teamDetail = TeamDetailModel.fromJson(response);
       data2024 = response["rating"]["2024"];
+      notifyListeners();
+      return true;
+    } catch (e) {
+      debugPrint("Error in getting team detail: $e");
+      notifyListeners();
+      return false;
+    }
+  }
+
+  Future<bool> getMyTeamDetails(String teamId) async {
+    try {
+      final response = await _repository.getTeamDetail(teamId);
+      _myTeamDetail = TeamDetailModel.fromJson(response);
+      data2024 = response["rating"]["2024"];
+      await SharedPreferencesUtils.setModel(
+        "myTeamDetails",
+        _myTeamDetail,
+      );
       notifyListeners();
       return true;
     } catch (e) {

@@ -6,33 +6,33 @@
         "url": "https://github.com/JohnHammond/ctf-katana"
     },
     {
-        "id": 1,
-        "name": "GitHub",
-        "description": "GitHub platform",
-        "url": "https://github.com/youhaveme9/ctfresources"
+        "id": 2,
+        "name": "Pwnable.kr",
+        "description": "pwnable.kr is a non-commercial wargame site which provides various pwn challenges regarding system exploitation",
+        "url": "https://pwnable.kr/"
+    },
+    {
+        "id": 4,
+        "name": "Smash The Stack",
+        "description": "The Smash the Stack Wargaming Network is an ethical hacking environment that simulates real-world software vulnerabilities using challenges, which we call wargames",
+        "url": "https://www.smashthestack.org/main.html#wargames"
+    },
+    {
+        "id": 5,
+        "name": "picoCTF",
+        "description": "picoCTF gamifies learning hacking with capture-the-flag puzzles created by trusted computer security and privacy experts at Carnegie Mellon University.",
+        "url": "https://picoctf.org/"
+    },
+    {
+        "id": 6,
+        "name": "awesome-ctf-cheatsheet",
+        "description": "A currated list of all capture the flag tips and strategies to solve Online CTF challenges and Hackthebox Machines.",
+        "url": "https://github.com/uppusaikiran/awesome-ctf-cheatsheet#awesome-ctf-cheatsheet-"
     },
     {
         "id": 1,
-        "name": "GitHub",
-        "description": "GitHub platform",
-        "url": "https://github.com/youhaveme9/ctfresources"
-    },
-    {
-        "id": 1,
-        "name": "GitHub",
-        "description": "GitHub platform",
-        "url": "https://github.com/youhaveme9/ctfresources"
-    },
-    {
-        "id": 1,
-        "name": "GitHub",
-        "description": "GitHub platform",
-        "url": "https://github.com/youhaveme9/ctfresources"
-    },
-    {
-        "id": 1,
-        "name": "GitHub",
-        "description": "GitHub platform",
-        "url": "https://github.com/youhaveme9/ctfresources"
+        "name": "Liveoverflow",
+        "description": "Best youtube channel for learning hacking and CTF",
+        "url": "https://www.youtube.com/@LiveOverflow"
     }
 ]

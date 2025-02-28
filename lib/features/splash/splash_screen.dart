@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _navigateToNextScreen() async {
-    await SharedPreferencesDemo.init();
+    await SharedPreferencesUtils.init();
 
     Timer(
         const Duration(seconds: 2),

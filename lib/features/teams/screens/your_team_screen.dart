@@ -1,6 +1,8 @@
 import 'package:ctfinfo/constants/string_constants.dart';
+// import 'package:ctfinfo/features/teams/models/team_detail_model.dart';
 import 'package:ctfinfo/features/teams/provider/team_provider.dart';
 import 'package:ctfinfo/utils/shared_preferences.dart';
+import 'package:ctfinfo/utils/toast_utils.dart';
 import 'package:ctfinfo/utils/validator.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
   late TeamProvider _teamProvider;
   final TextEditingController _teamIdController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -31,9 +34,9 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
   }
 
   Future<void> _initializeTeamId() async {
-    await SharedPreferencesDemo.init();
+    await SharedPreferencesUtils.init();
     String savedTeamId =
-        SharedPreferencesDemo.getString(SharedPreferencesDemo.teamId);
+        SharedPreferencesUtils.getString(SharedPreferencesUtils.teamId);
     if (savedTeamId.isNotEmpty) {
       setState(() {
         teamId = savedTeamId;
@@ -42,20 +45,41 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
   }
 
   Future<void> _saveTeamId() async {
-    String teamId = _teamIdController.text;
-    await SharedPreferencesDemo.setString(SharedPreferencesDemo.teamId, teamId);
-    await SharedPreferencesDemo.saveTeamId();
-    _loadTeamDetails();
-    setState(() {});
+    setState(() {
+      _isLoading = true; // Set loading to true before fetching data
+    });
+    ToastUtil.showInfoToast("Loading team details");
+    String enteredTeamId = _teamIdController.text;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('teamId', enteredTeamId);
+    setState(() {
+      teamId = enteredTeamId;
+    });
+
+    try {
+      await _teamProvider.getMyTeamDetails(enteredTeamId);
+      ToastUtil.showSuccessToast("Team details loaded successfully");
+    } catch (e) {
+      ToastUtil.showErrorToast("Failed to load team details");
+    }
+    setState(() {
+      _isLoading = false; // Set loading to false after data is fetched
+    });
   }
 
   Future<void> _loadTeamDetails() async {
+    setState(() {
+      _isLoading = true; // Set loading to true before fetching data
+    });
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? storedTeamId = prefs.getString('teamId');
 
     if (storedTeamId != null) {
-      await _teamProvider.getTeamDetail(storedTeamId);
+      await _teamProvider.getMyTeamDetails(storedTeamId);
     }
+    setState(() {
+      _isLoading = false; // Set loading to false after data is fetched
+    });
   }
 
   Future<void> _clearTeamId() async {
@@ -64,18 +88,18 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
     setState(() {
       teamId = null;
     });
+    ToastUtil.showSuccessToast("Team details cleared");
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body
-          // : isLoading
-          //     ? const Center(child: CircularProgressIndicator())
-          : Consumer<TeamProvider>(
+      body: Consumer<TeamProvider>(
         builder: (context, teamProvider, child) {
-          return _buildUI(teamProvider);
+          return _isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : _buildUI(teamProvider);
         },
       ),
     );
@@ -107,8 +131,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                   CircleAvatar(
                     //logo
                     backgroundImage: (teamId != null &&
-                            value.teamDetail.logo != null &&
-                            value.teamDetail.logo!.isNotEmpty)
+                            value.teamDetail.logo != null)
                         ? NetworkImage(value.teamDetail.logo!)
                         : const NetworkImage(
                             "https://images.ctfassets.net/aoyx73g9h2pg/3H8sLBKCH7xIph1YZmjFvd/8292d73649a27a4eb65724fa1df629f7/10684-1024x575.jpg?w=3840&q=100"),
@@ -153,11 +176,10 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                       ),
                       const SizedBox(width: 10),
                       CustomText(
-                        txtTitle: (teamId != null &&
-                                value.teamDetail.country != null &&
-                                value.teamDetail.country!.isNotEmpty)
-                            ? value.teamDetail.country!
-                            : StringConstants.notAvailable,
+                        txtTitle:
+                            (teamId != null && value.teamDetail.country != null)
+                                ? value.teamDetail.country!
+                                : StringConstants.notAvailable,
                         style: const TextStyle(fontSize: 16),
                       ),
                     ],
@@ -345,7 +367,6 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                         if (_formKey.currentState!.validate()) {
                           _saveTeamId();
                           Navigator.pop(context);
-                          setState(() {});
                         }
                       },
                       child: CustomText(
