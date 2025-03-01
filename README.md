@@ -42,3 +42,5 @@ A mobile app that keep you updated about latest CTFs and its resources (Under de
     </td>
   </tr>
 </table>
+
+> We use the ctftimes [API](https://ctftime.org/api/) to get CTF information in our app, making sure users get real-time and reliable data. We follow all the necessary guidelines to keep things secure and compliant, so everything runs smoothly while keeping user privacy a top priority.
