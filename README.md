@@ -23,6 +23,8 @@ A mobile app that keep you updated about latest CTFs and its resources (Under de
 <img src="https://github.com/user-attachments/assets/843a1af4-cdad-4891-825b-941f0f38e11f" height="420">
 <img src="https://github.com/user-attachments/assets/c90dc879-8c3c-4b7d-b7d9-b9eb6e6338c7" height="420">
 
+> If you liked our project, then give us a star ⭐️. If you want to contribute, follow these [guidelines](https://github.com/youhaveme9/ctfinfo/blob/main/CONTRIBUTING.md).
+
 <h2 align='center'> Project maintainers </h2>
 <table align='center'>
 <tr>
@@ -42,3 +44,5 @@ A mobile app that keep you updated about latest CTFs and its resources (Under de
     </td>
   </tr>
 </table>
+
+> We use the ctftimes [API](https://ctftime.org/api/) to get CTF information in our app, making sure users get real-time and reliable data. We follow all the necessary guidelines to keep things secure and compliant, so everything runs smoothly while keeping user privacy a top priority.
