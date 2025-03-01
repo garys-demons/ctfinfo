@@ -27,3 +27,23 @@ This document is for people wanting to contribute to the implementation of ctfin
    ```bash
    $ flutter run
    ```
+
+### How to contribute
+
+- Make a new branch for the issue you want to work on
+   ```bash
+   $ git branch -b bug224
+   ```
+
+- Make the required changes
+- Format your code
+  ```bash
+  $ dart format .
+  ```
+- Run flutter analyzer
+  ```bash
+  $ flutter analyze
+  ```
+- Commit your changes
+- Push the code to your branch and open a PR
+  
