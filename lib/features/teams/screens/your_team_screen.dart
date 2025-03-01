@@ -57,7 +57,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
     });
 
     try {
-      await _teamProvider.getMyTeamDetails(enteredTeamId);
+      await _teamProvider.getTeamDetail(enteredTeamId);
       ToastUtil.showSuccessToast("Team details loaded successfully");
     } catch (e) {
       ToastUtil.showErrorToast("Failed to load team details");
@@ -75,7 +75,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
     String? storedTeamId = prefs.getString('teamId');
 
     if (storedTeamId != null) {
-      await _teamProvider.getMyTeamDetails(storedTeamId);
+      await _teamProvider.getTeamDetail(storedTeamId);
     }
     setState(() {
       _isLoading = false; // Set loading to false after data is fetched
@@ -177,7 +177,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                       const SizedBox(width: 10),
                       CustomText(
                         txtTitle:
-                            (teamId != null && value.teamDetail.country != null)
+                            (teamId != null && value.teamDetail.country != null && value.teamDetail.country != "")
                                 ? value.teamDetail.country!
                                 : StringConstants.notAvailable,
                         style: const TextStyle(fontSize: 16),
