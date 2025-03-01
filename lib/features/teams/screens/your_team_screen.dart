@@ -176,10 +176,11 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                       ),
                       const SizedBox(width: 10),
                       CustomText(
-                        txtTitle:
-                            (teamId != null && value.teamDetail.country != null && value.teamDetail.country != "")
-                                ? value.teamDetail.country!
-                                : StringConstants.notAvailable,
+                        txtTitle: (teamId != null &&
+                                value.teamDetail.country != null &&
+                                value.teamDetail.country != "")
+                            ? value.teamDetail.country!
+                            : StringConstants.notAvailable,
                         style: const TextStyle(fontSize: 16),
                       ),
                     ],
