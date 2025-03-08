@@ -42,6 +42,7 @@ void main() {
     expect(retrievedTeam.name, 'Test Team');
     expect(retrievedTeam.country, 'Test Country');
     expect(retrievedTeam.logo, 'Test Logo');
+
     // expect(retrievedTeam.rating, testRating);  // For this we need to override == in rating class
 
     final team2 = TeamDetailModel(
