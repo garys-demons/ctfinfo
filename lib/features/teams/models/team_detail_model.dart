@@ -14,8 +14,10 @@ class TeamDetailModel {
   int? id;
 
   TeamDetailModel.fromJson(Map<String, dynamic> json) {
-    rating = Map.from(json["rating"])
-        .map((k, v) => MapEntry<String, Rating>(k, Rating.fromJson(v)));
+    rating = json["rating"] == null
+        ? null
+        : Map.from(json["rating"])
+            .map((k, v) => MapEntry<String, Rating>(k, Rating.fromJson(v)));
     name = json["name"];
     logo = json["logo"];
     country = json["country"];
