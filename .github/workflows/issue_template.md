@@ -1,3 +1,11 @@
+---
+name: "Issue"
+about: "Report an issue to improve the project"
+title: "[Issue]: "
+labels: ["issue"]
+assignees: []
+---
+
 ## I'm submitting a ...
 
 - [ ] bug report
