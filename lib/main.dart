@@ -33,10 +33,10 @@ class _MyAppState extends State<MyApp> {
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         title: 'CTF Info',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-          fontFamily: GoogleFonts.dmMono().fontFamily,
+        theme: Theme.of(context).copyWith(
+          textTheme: GoogleFonts.tomorrowTextTheme(
+            Theme.of(context).textTheme,
+          ),
         ),
         onGenerateRoute: (settings) =>
             RouteGenerator.getRouter(deepLinkinRouteSettings ?? settings),
