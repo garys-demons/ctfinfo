@@ -2,6 +2,8 @@ import 'package:ctfinfo/features/event/screens/event_screen.dart';
 import 'package:ctfinfo/features/resources/screens/resources_screen.dart';
 import 'package:ctfinfo/features/teams/screens/team_list_screen.dart';
 import 'package:ctfinfo/features/teams/screens/your_team_screen.dart';
+import 'package:ctfinfo/style/pallet.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -32,28 +34,52 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Scaffold(
       body: _navBarScreens.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Pallet.blackColour,
         elevation: 10,
-        unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed, 
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.event),
+            icon: Icon(
+              CupertinoIcons.flag,
+              color: Pallet.greenColour,
+            ),
+            activeIcon: Icon(
+              CupertinoIcons.flag_fill,
+              color: Pallet.greenColour,
+            ),
             label: 'Events',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.people),
+            icon: Icon(CupertinoIcons.person_2,
+            color: Pallet.greenColour,
+            ),
+            activeIcon: Icon(
+              CupertinoIcons.person_2_fill,
+              color: Pallet.greenColour,
+            ),
             label: 'Team',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.article),
+            icon: Icon(CupertinoIcons.doc_text,
+            color: Pallet.greenColour,),
+            activeIcon: Icon(
+              CupertinoIcons.doc_text_fill,
+              color: Pallet.greenColour,
+            ),
             label: 'Write Ups',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.group),
+            icon: Icon(CupertinoIcons.person,
+            color: Pallet.greenColour,),
+            activeIcon: Icon(
+              CupertinoIcons.person_solid,
+              color: Pallet.greenColour,
+            ),
             label: 'Your Team',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.deepPurple,
+        selectedItemColor: Pallet.greenColour,
         onTap: _onMenuItemSelected,
       ),
     );
