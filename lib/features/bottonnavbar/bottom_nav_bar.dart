@@ -36,7 +36,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Pallet.blackColour,
         elevation: 10,
-        type: BottomNavigationBarType.fixed, 
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
@@ -50,8 +50,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
             label: 'Events',
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.person_2,
-            color: Pallet.greenColour,
+            icon: Icon(
+              CupertinoIcons.person_2,
+              color: Pallet.greenColour,
             ),
             activeIcon: Icon(
               CupertinoIcons.person_2_fill,
@@ -60,8 +61,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
             label: 'Team',
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.doc_text,
-            color: Pallet.greenColour,),
+            icon: Icon(
+              CupertinoIcons.doc_text,
+              color: Pallet.greenColour,
+            ),
             activeIcon: Icon(
               CupertinoIcons.doc_text_fill,
               color: Pallet.greenColour,
@@ -69,8 +72,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
             label: 'Write Ups',
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.person,
-            color: Pallet.greenColour,),
+            icon: Icon(
+              CupertinoIcons.person,
+              color: Pallet.greenColour,
+            ),
             activeIcon: Icon(
               CupertinoIcons.person_solid,
               color: Pallet.greenColour,
