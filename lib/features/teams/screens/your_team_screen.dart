@@ -1,9 +1,9 @@
 import 'package:ctfinfo/constants/string_constants.dart';
-// import 'package:ctfinfo/features/teams/models/team_detail_model.dart';
 import 'package:ctfinfo/features/teams/provider/team_provider.dart';
 import 'package:ctfinfo/utils/shared_preferences.dart';
 import 'package:ctfinfo/utils/toast_utils.dart';
 import 'package:ctfinfo/utils/validator.dart';
+import 'package:ctfinfo/widgets/custom_scaffold.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:footer/footer.dart';
@@ -93,8 +93,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
+    return CustomScaffold(
       body: Consumer<TeamProvider>(
         builder: (context, teamProvider, child) {
           return _isLoading

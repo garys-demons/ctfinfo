@@ -1,9 +1,9 @@
-import 'package:ctfinfo/constants/image_constants.dart';
 import 'package:ctfinfo/constants/string_constants.dart';
 import 'package:ctfinfo/features/event/provider/event_provider.dart';
 import 'package:ctfinfo/style/pallet.dart';
 import 'package:ctfinfo/utils/date_time_utils.dart';
 import 'package:ctfinfo/widgets/custom_button.dart';
+import 'package:ctfinfo/widgets/custom_scaffold.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:footer/footer.dart';
@@ -30,28 +30,19 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // backgroundColor: Colors.white,
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(ImageConstants.bgPrimary),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: ChangeNotifierProvider(
-          create: (context) => _eventProvider,
-          child: Consumer<EventProvider>(
-            builder: (context, eventProvider, child) {
-              if (eventProvider.eventDetail.id == null) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-
-              return _buildUI(eventProvider);
-            },
-          ),
+    return CustomScaffold(
+      body: ChangeNotifierProvider(
+        create: (context) => _eventProvider,
+        child: Consumer<EventProvider>(
+          builder: (context, eventProvider, child) {
+            if (eventProvider.eventDetail.id == null) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+      
+            return _buildUI(eventProvider);
+          },
         ),
       ),
     );
