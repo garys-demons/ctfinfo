@@ -1,5 +1,6 @@
 import 'package:ctfinfo/features/event/provider/event_provider.dart';
 import 'package:ctfinfo/features/event/widgets/event_card.dart';
+import 'package:ctfinfo/widgets/custom_scaffold.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +23,7 @@ class _EventScreenState extends State<EventScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CustomScaffold(
       body: ChangeNotifierProvider(
         create: (context) => _eventProvider,
         child: Consumer<EventProvider>(
