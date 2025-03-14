@@ -1,3 +1,4 @@
+import 'package:ctfinfo/constants/image_constants.dart';
 import 'package:ctfinfo/features/event/provider/event_provider.dart';
 import 'package:ctfinfo/features/event/widgets/event_card.dart';
 import 'package:ctfinfo/widgets/custom_scaffold.dart';
@@ -55,6 +56,8 @@ class _EventScreenState extends State<EventScreen> {
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
+            const SizedBox(height: 10),
+            Image.asset(ImageConstants.lines),
             const SizedBox(height: 10),
             ListView.builder(
               physics: ScrollPhysics(),
