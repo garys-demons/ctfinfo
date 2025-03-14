@@ -57,6 +57,19 @@ class CustomTheme {
             fontWeight: FontWeight.bold,
             fontFamily: "Tomorrow",
           ),
+          headlineSmall: const TextStyle(
+            //for evens/team details/name
+            fontSize: 22,
+            color: Pallet.greenColour,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Tomorrow",
+          ),
+          bodyLarge: const TextStyle(
+            //for evens/team details/name
+            fontSize: 16,
+            color: Pallet.greenColour,
+            fontFamily: "Tomorrow",
+          ),
         ),
         inputDecorationTheme: InputDecorationTheme(
           hintStyle: TextStyle(
