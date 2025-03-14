@@ -9,8 +9,6 @@ class CustomScaffold extends StatelessWidget {
   final Widget? bottomNavigationBar;
   final bool extendBody;
   final bool extendBodyBehindAppBar;
-  final Color? backgroundColor;
-  final double? backgroundOpacity;
 
   const CustomScaffold({
     super.key,
@@ -21,8 +19,6 @@ class CustomScaffold extends StatelessWidget {
     this.bottomNavigationBar,
     this.extendBody = false,
     this.extendBodyBehindAppBar = false,
-    this.backgroundColor,
-    this.backgroundOpacity = 0.5,
   });
 
   @override
@@ -39,9 +35,7 @@ class CustomScaffold extends StatelessWidget {
           image: DecorationImage(
             image: AssetImage(ImageConstants.bgPrimary),
             fit: BoxFit.cover,
-            opacity: double.parse(backgroundOpacity.toString()),
           ),
-          color: backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
         ),
         child: body,
       ),

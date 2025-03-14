@@ -1,4 +1,3 @@
-import 'package:ctfinfo/style/pallet.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -11,24 +10,12 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(vertical: 14, horizontal: 20),
-        backgroundColor: Pallet.greenColour,
-        foregroundColor: Pallet.blackColour,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-      ),
+      style: Theme.of(context).elevatedButtonTheme.style,
       onPressed: () {
         onPressed();
       },
       child: CustomText(
-        txtTitle: text,
-        style: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
+          txtTitle: text, style: Theme.of(context).textTheme.titleMedium),
     );
   }
 }
