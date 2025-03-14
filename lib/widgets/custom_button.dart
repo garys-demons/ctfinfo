@@ -1,4 +1,3 @@
-
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -16,9 +15,7 @@ class CustomButton extends StatelessWidget {
         onPressed();
       },
       child: CustomText(
-        txtTitle: text,
-        style: Theme.of(context).textTheme.titleMedium
-      ),
+          txtTitle: text, style: Theme.of(context).textTheme.titleMedium),
     );
   }
 }

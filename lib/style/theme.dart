@@ -79,9 +79,7 @@ class CustomTheme {
               foregroundColor: Pallet.blackColour,
               backgroundColor: Pallet.greenColour,
               elevation: 0,
-              padding: EdgeInsets.symmetric(vertical: 14.0, horizontal: 20.0)
-              ),
-        )
-    );
+              padding: EdgeInsets.symmetric(vertical: 14.0, horizontal: 20.0)),
+        ));
   }
 }
