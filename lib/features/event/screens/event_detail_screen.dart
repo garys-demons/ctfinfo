@@ -1,3 +1,4 @@
+import 'package:ctfinfo/constants/image_constants.dart';
 import 'package:ctfinfo/constants/string_constants.dart';
 import 'package:ctfinfo/features/event/provider/event_provider.dart';
 import 'package:ctfinfo/utils/date_time_utils.dart';
@@ -29,19 +30,27 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: ChangeNotifierProvider(
-        create: (context) => _eventProvider,
-        child: Consumer<EventProvider>(
-          builder: (context, eventProvider, child) {
-            if (eventProvider.eventDetail.id == null) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+      // backgroundColor: Colors.white,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(ImageConstants.bgPrimary),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: ChangeNotifierProvider(
+          create: (context) => _eventProvider,
+          child: Consumer<EventProvider>(
+            builder: (context, eventProvider, child) {
+              if (eventProvider.eventDetail.id == null) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
 
-            return _buildUI(eventProvider);
-          },
+              return _buildUI(eventProvider);
+            },
+          ),
         ),
       ),
     );
@@ -53,7 +62,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: FooterView(
           footer: Footer(
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.transparent,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -110,9 +119,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                   ),
                 ),
                 const SizedBox(width: 10),
-                const CustomText(
+                CustomText(
                   txtTitle: "CTF Detail",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.headlineLarge,
                 ),
               ],
             ),
