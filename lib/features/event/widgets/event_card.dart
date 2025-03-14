@@ -64,19 +64,21 @@ class EventCard extends StatelessWidget {
                       style: Theme.of(context).textTheme.headlineSmall,
                       textOverflow: TextOverflow.ellipsis,
                     ),
+                    const SizedBox(height: 5),
                     Row(
                       children: [
                         CustomText(
                           txtTitle: "${StringConstants.averageWeight} :",
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
-                        const SizedBox(width: 5),
+                        const SizedBox(width: 3),
                         CustomText(
                           txtTitle: averageWeight,
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ],
                     ),
+                    const SizedBox(height: 3),
                     CustomText(
                       txtTitle:
                           "${DateTimeUtils.getFormattedDate(startDate)} - ${DateTimeUtils.getFormattedDate(endDate)}",

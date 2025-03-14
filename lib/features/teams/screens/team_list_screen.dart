@@ -1,5 +1,6 @@
 import 'package:ctfinfo/features/teams/provider/team_provider.dart';
 import 'package:ctfinfo/features/teams/widgets/team_card.dart';
+import 'package:ctfinfo/widgets/custom_scaffold.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +23,7 @@ class _TeamListScreenState extends State<TeamListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CustomScaffold(
       body: ChangeNotifierProvider(
         create: (context) => _teamProvider,
         child: Consumer<TeamProvider>(

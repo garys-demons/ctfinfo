@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:ctfinfo/features/resources/widgets/resource_card.dart';
+import 'package:ctfinfo/widgets/custom_scaffold.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,9 +38,8 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
         : _buildUI();
   }
 
-  Scaffold _buildUI() {
-    return Scaffold(
-      backgroundColor: Colors.white,
+  CustomScaffold _buildUI() {
+    return CustomScaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
