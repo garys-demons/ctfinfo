@@ -1,11 +1,12 @@
 import 'package:ctfinfo/constants/image_constants.dart';
 import 'package:ctfinfo/constants/string_constants.dart';
 import 'package:ctfinfo/features/event/provider/event_provider.dart';
+import 'package:ctfinfo/style/pallet.dart';
 import 'package:ctfinfo/utils/date_time_utils.dart';
+import 'package:ctfinfo/widgets/custom_button.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:footer/footer.dart';
-import 'package:footer/footer_view.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -60,53 +61,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: FooterView(
-          footer: Footer(
-            backgroundColor: Colors.transparent,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () async {
-                    if (!await launchUrl(
-                        Uri.parse(value.eventDetail.url.toString()))) {
-                      throw Exception('Could not launch');
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: CustomText(
-                    txtTitle: StringConstants.openWebsite,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  onPressed: () async {
-                    if (!await launchUrl(
-                        Uri.parse(value.eventDetail.ctftimeUrl.toString()))) {
-                      throw Exception('Could not launch');
-                    }
-                  },
-                  child: CustomText(
-                    txtTitle: StringConstants.viewOnCtfTimes,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          children: [
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+           children: [
             const SizedBox(height: 20),
             Row(
               children: [
@@ -116,6 +73,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                   },
                   child: const Icon(
                     Icons.arrow_back_ios,
+                    color: Pallet.greenColour,
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -146,11 +104,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                   CustomText(
                     txtTitle: value.eventDetail.title ?? "Event Name",
                     textOverflow: TextOverflow.visible,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blueAccent,
-                    ),
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ],
               ),
@@ -158,87 +112,87 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             const SizedBox(height: 20),
             Row(
               children: [
-                const CustomText(
+                CustomText(
                   txtTitle: "${StringConstants.start} :",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(width: 10),
                 CustomText(
                   txtTitle:
                       "${DateTimeUtils.getFormattedDate(value.eventDetail.start.toString())} - ${DateTimeUtils.getFormattedTime(value.eventDetail.start.toString())} UTC",
-                  style: TextStyle(fontSize: 16),
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],
             ),
             const SizedBox(height: 10),
             Row(
               children: [
-                const CustomText(
+                CustomText(
                   txtTitle: "${StringConstants.end} :",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(width: 10),
                 CustomText(
                   txtTitle:
                       "${DateTimeUtils.getFormattedDate(value.eventDetail.finish.toString())} - ${DateTimeUtils.getFormattedTime(value.eventDetail.finish.toString())} UTC",
-                  style: TextStyle(fontSize: 16),
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],
             ),
             const SizedBox(height: 10),
             Row(
               children: [
-                const CustomText(
+                CustomText(
                   txtTitle: "${StringConstants.averageWeight} :",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(width: 10),
                 CustomText(
                   txtTitle: value.eventDetail.weight.toString(),
-                  style: TextStyle(fontSize: 16),
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],
             ),
             const SizedBox(height: 10),
             Row(
               children: [
-                const CustomText(
+                CustomText(
                   txtTitle: "${StringConstants.participants} :",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(width: 10),
                 CustomText(
                   txtTitle: value.eventDetail.participants.toString(),
-                  style: TextStyle(fontSize: 16),
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],
             ),
             const SizedBox(height: 10),
             Row(
               children: [
-                const CustomText(
+                CustomText(
                   txtTitle: "${StringConstants.format} :",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(width: 10),
                 CustomText(
                   txtTitle: value.eventDetail.format ?? "Format",
-                  style: TextStyle(fontSize: 16),
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],
             ),
             const SizedBox(height: 10),
             Row(
               children: [
-                const CustomText(
+                CustomText(
                   txtTitle: "${StringConstants.mode} :",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(width: 10),
                 CustomText(
                   txtTitle:
                       value.eventDetail.onsite == true ? "Onsite" : "Online",
-                  style: TextStyle(fontSize: 16),
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],
             ),
@@ -246,22 +200,51 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             value.eventDetail.location != ""
                 ? Row(
                     children: [
-                      const CustomText(
+                      CustomText(
                         txtTitle: "${StringConstants.location} :",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(width: 10),
                       CustomText(
                         txtTitle: value.eventDetail.location,
-                        style: TextStyle(fontSize: 16),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],
                   )
                 : SizedBox(),
+            const SizedBox(height: 150.0,),
+            Footer(
+              backgroundColor: Colors.transparent,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomButton(
+                    text: StringConstants.openWebsite, 
+                    onPressed: () async {
+                        if (!await launchUrl(
+                            Uri.parse(value.eventDetail.url.toString()))) {
+                          throw Exception('Could not launch');
+                        }
+                      },
+                    ),
+                  const SizedBox(width: 10),
+                  CustomButton(
+                    text: StringConstants.viewOnCtfTimes, 
+                    onPressed: () async {
+                      if (!await launchUrl(
+                          Uri.parse(value.eventDetail.ctftimeUrl.toString()))) {
+                        throw Exception('Could not launch');
+                      }
+                    },
+                    )
+                ],
+              ),
+          ),
           ],
-        ),
+        )
       ),
     );
   }
 }
+
+         

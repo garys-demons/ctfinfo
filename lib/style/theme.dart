@@ -26,19 +26,19 @@ class CustomTheme {
             //for start and end date etc etc.
             color: Pallet.greenColour,
             fontSize: 17,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w500,
             fontFamily: "Tomorrow",
           ),
           titleMedium: const TextStyle(
-            //EG: points- 123.4567890
-            color: Pallet.greenColour,
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
+            //EG: buttons
+            color: Pallet.blackColour,
+            fontSize: 17,
+            fontWeight: FontWeight.bold,
             fontFamily: "Tomorrow",
           ),
           bodyMedium: const TextStyle(
             //EG: "team id", "average weight"
-            fontSize: 19,
+            fontSize: 20.0,
             color: Pallet.greenColour,
             fontWeight: FontWeight.bold,
             fontFamily: "Tomorrow",
@@ -54,7 +54,7 @@ class CustomTheme {
             //for evens/team details/name
             fontSize: 26,
             color: Pallet.greenColour,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.bold,
             fontFamily: "Tomorrow",
           ),
         ),
@@ -79,10 +79,9 @@ class CustomTheme {
               foregroundColor: Pallet.blackColour,
               backgroundColor: Pallet.greenColour,
               elevation: 0,
-              textStyle: const TextStyle(
-                fontSize: 17.0,
-                fontWeight: FontWeight.bold,
-              )),
-        ));
+              padding: EdgeInsets.symmetric(vertical: 14.0, horizontal: 20.0)
+              ),
+        )
+    );
   }
 }
