@@ -27,30 +27,35 @@ class CustomTheme {
             color: Pallet.greenColour,
             fontSize: 17,
             fontWeight: FontWeight.w700,
+            fontFamily: "Tomorrow",
           ),
           titleMedium: const TextStyle(
             //EG: points- 123.4567890
             color: Pallet.greenColour,
             fontSize: 16,
             fontWeight: FontWeight.w400,
+            fontFamily: "Tomorrow",
           ),
           bodyMedium: const TextStyle(
             //EG: "team id", "average weight"
             fontSize: 19,
             color: Pallet.greenColour,
             fontWeight: FontWeight.bold,
+            fontFamily: "Tomorrow",
           ),
           headlineLarge: const TextStyle(
             //for headings
             fontSize: 46.0,
             color: Pallet.greenColour,
             fontWeight: FontWeight.normal,
+            fontFamily: "Tomorrow",
           ),
           headlineMedium: const TextStyle(
             //for evens/team details/name
             fontSize: 26,
             color: Pallet.greenColour,
             fontWeight: FontWeight.normal,
+            fontFamily: "Tomorrow",
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
