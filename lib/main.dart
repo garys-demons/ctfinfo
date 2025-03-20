@@ -2,8 +2,8 @@ import 'package:ctfinfo/features/event/provider/event_provider.dart';
 import 'package:ctfinfo/features/splash/splash_screen.dart';
 import 'package:ctfinfo/features/teams/provider/team_provider.dart';
 import 'package:ctfinfo/routes/routes.dart';
+import 'package:ctfinfo/style/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -33,11 +33,7 @@ class _MyAppState extends State<MyApp> {
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         title: 'CTF Info',
-        theme: Theme.of(context).copyWith(
-          textTheme: GoogleFonts.tomorrowTextTheme(
-            Theme.of(context).textTheme,
-          ),
-        ),
+        theme: CustomTheme.darkTheme(),
         onGenerateRoute: (settings) =>
             RouteGenerator.getRouter(deepLinkinRouteSettings ?? settings),
         home: const SplashScreen(),

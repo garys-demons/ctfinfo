@@ -1,9 +1,12 @@
+import 'package:ctfinfo/constants/image_constants.dart';
 import 'package:ctfinfo/constants/string_constants.dart';
-// import 'package:ctfinfo/features/teams/models/team_detail_model.dart';
 import 'package:ctfinfo/features/teams/provider/team_provider.dart';
+import 'package:ctfinfo/style/pallet.dart';
 import 'package:ctfinfo/utils/shared_preferences.dart';
 import 'package:ctfinfo/utils/toast_utils.dart';
 import 'package:ctfinfo/utils/validator.dart';
+import 'package:ctfinfo/widgets/custom_button.dart';
+import 'package:ctfinfo/widgets/custom_scaffold.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:footer/footer.dart';
@@ -93,8 +96,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
+    return CustomScaffold(
       body: Consumer<TeamProvider>(
         builder: (context, teamProvider, child) {
           return _isLoading
@@ -118,8 +120,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: CustomText(
                 txtTitle: 'Your Team',
-                style:
-                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
             ),
             const SizedBox(height: 12),
@@ -143,25 +144,20 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                         ? value.teamDetail.name!
                         : "Team Name",
                     textOverflow: TextOverflow.visible,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blueAccent,
-                    ),
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   const SizedBox(height: 20.0),
                   //teamId
                   Row(
                     children: [
-                      const CustomText(
+                      CustomText(
                         txtTitle: "${StringConstants.teamId} :",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(width: 10),
                       CustomText(
                         txtTitle: teamId ?? StringConstants.notAvailable,
-                        style: const TextStyle(fontSize: 16),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],
                   ),
@@ -169,10 +165,9 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                   //country
                   Row(
                     children: [
-                      const CustomText(
+                      CustomText(
                         txtTitle: "${StringConstants.country} :",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(width: 10),
                       CustomText(
@@ -181,7 +176,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                                 value.teamDetail.country != "")
                             ? value.teamDetail.country!
                             : StringConstants.notAvailable,
-                        style: const TextStyle(fontSize: 16),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],
                   ),
@@ -189,10 +184,9 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                   //rating place
                   Row(
                     children: [
-                      const CustomText(
+                      CustomText(
                         txtTitle: "${StringConstants.ratingPlace} :",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(width: 10),
                       CustomText(
@@ -201,7 +195,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                                 rating2024['rating_place'] != null)
                             ? rating2024['rating_place'].toString()
                             : StringConstants.notAvailable,
-                        style: const TextStyle(fontSize: 16),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],
                   ),
@@ -209,10 +203,9 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                   //organizer points
                   Row(
                     children: [
-                      const CustomText(
+                      CustomText(
                         txtTitle: "${StringConstants.organizerPoints} :",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(width: 10),
                       CustomText(
@@ -221,7 +214,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                                 rating2024['organizer_points'] != null)
                             ? rating2024['organizer_points'].toString()
                             : StringConstants.notAvailable,
-                        style: const TextStyle(fontSize: 16),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],
                   ),
@@ -229,10 +222,9 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                   //rating points
                   Row(
                     children: [
-                      const CustomText(
+                      CustomText(
                         txtTitle: "${StringConstants.ratingPoints} :",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(width: 10),
                       CustomText(
@@ -241,7 +233,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                                 rating2024['rating_points'] != null)
                             ? rating2024['rating_points'].toString()
                             : StringConstants.notAvailable,
-                        style: const TextStyle(fontSize: 16),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],
                   ),
@@ -249,10 +241,9 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                   //country place
                   Row(
                     children: [
-                      const CustomText(
+                      CustomText(
                         txtTitle: "${StringConstants.countryPlace} :",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(width: 10),
                       CustomText(
@@ -261,7 +252,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                                 rating2024['country_place'] != null)
                             ? rating2024['country_place'].toString()
                             : StringConstants.notAvailable,
-                        style: const TextStyle(fontSize: 16),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],
                   ),
@@ -269,7 +260,7 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
               ),
             ),
             const SizedBox(
-              height: 150,
+              height: 100,
             ),
             Footer(
               backgroundColor: Colors.transparent,
@@ -285,31 +276,9 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
 
   Widget _buttons() {
     if (teamId != null) {
-      return ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blueAccent,
-            foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-          onPressed: _clearTeamId,
-          child: CustomText(
-            txtTitle: 'Clear Data',
-          ));
+      return CustomButton(text: 'Clear Data', onPressed: _clearTeamId);
     } else {
-      return ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blueAccent,
-            foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-          onPressed: _showSettingsPanel,
-          child: CustomText(
-            txtTitle: 'Add Team',
-          ));
+      return CustomButton(text: 'Add Team', onPressed: _showSettingsPanel);
     }
   }
 
@@ -319,6 +288,12 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
       builder: (context) {
         return Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 60),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(ImageConstants.bgPrimary),
+              fit: BoxFit.cover,
+            ),
+          ),
           child: Form(
             key: _formKey,
             child: Column(
@@ -326,9 +301,9 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                 const SizedBox(
                   height: 50,
                 ),
-                const CustomText(
+                CustomText(
                   txtTitle: 'Enter Your Team ID',
-                  style: TextStyle(fontSize: 20),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(
                   height: 20.0,
@@ -338,9 +313,15 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderSide:
-                          BorderSide(color: Colors.deepPurple, width: 2.0),
+                          BorderSide(color: Pallet.greenColour, width: 2.0),
                     ),
-                  ).copyWith(hintText: 'Enter Your CTF TeamID'),
+                  ).copyWith(
+                    hintText: 'Enter Your CTF TeamID',
+                    hintStyle: TextStyle(
+                      fontSize: 20.0,
+                      color: Pallet.greenColour,
+                    ),
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your CTF team ID';
@@ -356,42 +337,24 @@ class _YourTeamScreenState extends State<YourTeamScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                    CustomButton(
+                      text: 'Save',
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           _saveTeamId();
                           Navigator.pop(context);
                         }
                       },
-                      child: CustomText(
-                        txtTitle: 'Save',
-                      ),
                     ),
                     const SizedBox(
                       width: 10.0,
                     ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                    CustomButton(
+                      text: 'Cancel',
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: CustomText(
-                        txtTitle: 'Cancel',
-                      ),
-                    ),
+                    )
                   ],
                 )
               ],

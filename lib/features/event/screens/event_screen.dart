@@ -1,5 +1,7 @@
+import 'package:ctfinfo/constants/image_constants.dart';
 import 'package:ctfinfo/features/event/provider/event_provider.dart';
 import 'package:ctfinfo/features/event/widgets/event_card.dart';
+import 'package:ctfinfo/widgets/custom_scaffold.dart';
 import 'package:ctfinfo/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +24,7 @@ class _EventScreenState extends State<EventScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CustomScaffold(
       body: ChangeNotifierProvider(
         create: (context) => _eventProvider,
         child: Consumer<EventProvider>(
@@ -51,9 +53,11 @@ class _EventScreenState extends State<EventScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 28),
               child: CustomText(
                 txtTitle: 'All CTFs',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
             ),
+            const SizedBox(height: 10),
+            Image.asset(ImageConstants.lines),
             const SizedBox(height: 10),
             ListView.builder(
               physics: ScrollPhysics(),

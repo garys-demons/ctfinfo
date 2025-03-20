@@ -26,31 +26,49 @@ class CustomTheme {
             //for start and end date etc etc.
             color: Pallet.greenColour,
             fontSize: 17,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w500,
+            fontFamily: "Tomorrow",
           ),
           titleMedium: const TextStyle(
-            //EG: points- 123.4567890
-            color: Pallet.greenColour,
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
+            //EG: buttons
+            color: Pallet.blackColour,
+            fontSize: 17,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Tomorrow",
           ),
           bodyMedium: const TextStyle(
             //EG: "team id", "average weight"
-            fontSize: 19,
+            fontSize: 20.0,
             color: Pallet.greenColour,
             fontWeight: FontWeight.bold,
+            fontFamily: "Tomorrow",
           ),
           headlineLarge: const TextStyle(
             //for headings
             fontSize: 46.0,
             color: Pallet.greenColour,
             fontWeight: FontWeight.normal,
+            fontFamily: "Tomorrow",
           ),
           headlineMedium: const TextStyle(
             //for evens/team details/name
             fontSize: 26,
             color: Pallet.greenColour,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Tomorrow",
+          ),
+          headlineSmall: const TextStyle(
+            //for evens/team details/name
+            fontSize: 22,
+            color: Pallet.greenColour,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Tomorrow",
+          ),
+          bodyLarge: const TextStyle(
+            //for evens/team details/name
+            fontSize: 16,
+            color: Pallet.greenColour,
+            fontFamily: "Tomorrow",
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
@@ -74,10 +92,7 @@ class CustomTheme {
               foregroundColor: Pallet.blackColour,
               backgroundColor: Pallet.greenColour,
               elevation: 0,
-              textStyle: const TextStyle(
-                fontSize: 17.0,
-                fontWeight: FontWeight.bold,
-              )),
+              padding: EdgeInsets.symmetric(vertical: 14.0, horizontal: 20.0)),
         ));
   }
 }
