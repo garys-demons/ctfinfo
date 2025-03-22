@@ -19,7 +19,7 @@ class CustomText extends StatelessWidget {
     this.textOverflow,
     this.onPressed,
     this.btnTextAlignment,
-    this.softWrap = true, 
+    this.softWrap = true,
   });
 
   @override
